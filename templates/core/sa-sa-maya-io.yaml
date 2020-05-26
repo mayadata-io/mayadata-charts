@@ -1,0 +1,6 @@
+{{- if or (eq .Values.type "DOP") (eq .Values.type "OEP") }}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sa-maya-io
+{{- end }}

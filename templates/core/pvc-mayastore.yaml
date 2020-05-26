@@ -1,0 +1,13 @@
+{{- if or (eq .Values.type "DOP") (eq .Values.type "OEP") }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mayastore
+spec:
+  storageClassName: {{ .Values.mayaStore.storageClass }}
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.mayaStore.storageCapacity }}
+{{- end }}

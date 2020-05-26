@@ -1,0 +1,12 @@
+{{- if or (eq .Values.type "DOP") (eq .Values.type "OEP") }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: consul
+spec:
+  ports:
+  - name: http
+    port: 8500
+  selector:
+    name: consul
+{{- end }}
