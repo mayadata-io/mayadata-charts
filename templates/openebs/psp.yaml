@@ -1,4 +1,4 @@
-{{- if or (eq .Values.type "openebs") (eq .Values.type "OEP") }}
+{{- if .Values.type.installopenebs -}}
 {{- if and .Values.rbac.create .Values.rbac.pspEnabled }}
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy

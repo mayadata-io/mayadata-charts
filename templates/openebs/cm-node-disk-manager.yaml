@@ -1,4 +1,4 @@
-{{- if or (eq .Values.type "openebs") (eq .Values.type "OEP") }}
+{{- if .Values.type.installopenebs -}}
 {{- if .Values.ndm.enabled }}
 # This is the node-disk-manager related config.
 # It can be used to customize the disks probes and filters

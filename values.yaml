@@ -4,12 +4,14 @@
 
 # Update platfrom according to your Platform, Default include(GKE,Packet) and SUSE
 platform: Default
-type: OEP
+type: 
+  installopenesbs: fasle
+  installdirector: true 
 server:
   release: 1.9.0-RC2.ee
   dockerSecret: directoronprem-registry-secret
   protocol: http
-  url:
+  host:
   httpNodePort: 30380
   httpsNodePort: 30381
   apiAuthAccessMode: unrestricted
@@ -61,29 +63,29 @@ server:
 
 mysql:
   #storageClass: openebs-jiva-default
-  storageClass: standard
+  storageClass: openebs-hostpath
   storageCapacity: 50Gi
 
 elasticSearch:
   #storageClass: openebs-hostpath
-  storageClass: standard
+  storageClass: openebs-hostpath
   storageCapacity: 50Gi
   replicas: 1
 
 cassandra:
   #storageClass: openebs-hostpath
-  storageClass: standard
+  storageClass: openebs-hostpath
   storageCapacity: 50Gi
   replicas: 1
 
 mayaStore:
   #storageClass: cstor-storage-class
-  storageClass: standard
+  storageClass: openebs-hostpath
   storageCapacity: 10Gi
 
 grafana:
   #storageClass: cstor-storage-class
-  storageClass: standard
+  storageClass: openebs-hostpath
   storageCapacity: 50Gi
 
 cortex:

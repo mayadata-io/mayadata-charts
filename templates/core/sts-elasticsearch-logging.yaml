@@ -1,5 +1,5 @@
 # Elasticsearch deployment itself
-{{- if or (eq .Values.type "DOP") (eq .Values.type "OEP") }}
+{{- if .Values.type.installdirector -}}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:

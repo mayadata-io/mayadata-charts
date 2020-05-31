@@ -1,4 +1,4 @@
-{{- if or (eq .Values.type "DOP") (eq .Values.type "OEP") }}
+{{- if .Values.type.installdirector -}}
 kind: ConfigMap
 apiVersion: v1
 metadata:

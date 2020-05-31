@@ -1,4 +1,4 @@
-{{- if or (eq .Values.type "openebs") (eq .Values.type "OEP") }}
+{{- if .Values.type.installopenebs -}}
 {{- if .Values.apiserver.enabled }}
 apiVersion: apps/v1
 kind: Deployment

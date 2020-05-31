@@ -1,4 +1,4 @@
-{{- if or (eq .Values.type "openebs") (eq .Values.type "OEP") }}
+{{- if .Values.type.installopenebs -}}
 {{- if .Values.rbac.create }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
