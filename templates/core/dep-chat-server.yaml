@@ -45,4 +45,4 @@ spec:
             memory: 256Mi
       imagePullSecrets:
       - name: {{ .Values.server.dockerSecret }}
-{{- end }}
+{{- end -}}

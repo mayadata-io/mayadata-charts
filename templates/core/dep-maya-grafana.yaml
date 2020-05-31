@@ -50,4 +50,4 @@ spec:
       - name: maya-grafana-store
         persistentVolumeClaim:
           claimName: grafana-claim
-{{- end }}
+{{- end -}}

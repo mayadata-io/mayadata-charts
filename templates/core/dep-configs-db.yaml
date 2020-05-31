@@ -28,4 +28,4 @@ spec:
         - containerPort: 5432
       imagePullSecrets:
       - name: {{ .Values.server.dockerSecret }}
-{{- end }}
+{{- end -}}

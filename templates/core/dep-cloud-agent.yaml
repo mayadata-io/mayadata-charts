@@ -26,4 +26,4 @@ spec:
               protocol: TCP
       imagePullSecrets:
       - name: {{ .Values.server.dockerSecret }}
-{{- end }}
+{{- end -}}

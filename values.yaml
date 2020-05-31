@@ -5,8 +5,8 @@
 # Update platfrom according to your Platform, Default include(GKE,Packet) and SUSE
 platform: Default
 type: 
-  installopenesbs: fasle
   installdirector: true 
+  installopenesbs: fasle
 server:
   release: 1.9.0-RC2.ee
   dockerSecret: directoronprem-registry-secret

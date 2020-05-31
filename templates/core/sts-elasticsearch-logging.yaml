@@ -1,4 +1,3 @@
-# Elasticsearch deployment itself
 {{- if .Values.type.installdirector -}}
 apiVersion: apps/v1
 kind: StatefulSet

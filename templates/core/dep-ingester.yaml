@@ -136,4 +136,4 @@ spec:
           timeoutSeconds: 1
       imagePullSecrets:
       - name: {{ .Values.server.dockerSecret }}
-{{- end }}
+{{- end -}}

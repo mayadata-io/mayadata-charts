@@ -197,5 +197,5 @@ data:
     export CLASSPATH=/kubernetes-cassandra.jar
     
     su cassandra -c "$CASSANDRA_HOME/bin/cassandra -f"
- {{- end }}   
+ {{- end -}}   
 

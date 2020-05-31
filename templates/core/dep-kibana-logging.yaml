@@ -38,4 +38,4 @@ spec:
             cpu: 100m
       imagePullSecrets:
       - name: {{ .Values.server.dockerSecret }}
-{{- end }}
+{{- end -}}

@@ -1,13 +1,12 @@
 {{- if .Values.type.installdirector -}}
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: maya-config
 data:
   maya.properties: |
-    maya.server.url={{ .Values.server.protocol }}://{{ .Values.server.host }}
-    external.svc.unauthorize.redirect.url={{ .Values.server.protocol }}://{{ .Values.server.host }}/login
+    maya.server.url={{ .Values.server.protocol }}://{{ .Values.server.url }}
+    external.svc.unauthorize.redirect.url={{ .Values.server.protocol }}://{{ .Values.server.url }}/login
     api.security.enabled=true
     api.auth.access.mode={{ .Values.server.apiAuthAccessMode }}
     api.ui.index=http://maya-ui.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}/latest/index.html
@@ -26,14 +25,14 @@ data:
     api.auth.github.client.secret={{ .Values.server.apiAuthGithubClientSecret }}
     api.auth.google.client.id={{ .Values.server.apiAuthGoogleClientId }}
     api.auth.google.client.secret={{ .Values.server.apiAuthGoogleClientSecret }}
-    api.auth.google.redirect.url={{ .Values.server.protocol }}://{{ .Values.server.host }}
-    maya.cortex.push.url={{ .Values.server.protocol }}://{{ .Values.server.host }}/maya-cortex-push/api/prom/push
-    maya.cortex.pull.url={{ .Values.server.protocol }}://{{ .Values.server.host }}/maya-cortex-pull/api/prom
-    maya.cortex.configs.url={{ .Values.server.protocol }}://{{ .Values.server.host }}/maya-cortex-configs/api/prom/configs/rules
-    maya.cortex.am.url={{ .Values.server.protocol }}://{{ .Values.server.host }}/maya-cortex-am/api/prom/alertmanager/
+    api.auth.google.redirect.url={{ .Values.server.protocol }}://{{ .Values.server.url }}
+    maya.cortex.push.url={{ .Values.server.protocol }}://{{ .Values.server.url }}/maya-cortex-push/api/prom/push
+    maya.cortex.pull.url={{ .Values.server.protocol }}://{{ .Values.server.url }}/maya-cortex-pull/api/prom
+    maya.cortex.configs.url={{ .Values.server.protocol }}://{{ .Values.server.url }}/maya-cortex-configs/api/prom/configs/rules
+    maya.cortex.am.url={{ .Values.server.protocol }}://{{ .Values.server.url }}/maya-cortex-am/api/prom/alertmanager/
     maya.alertstore.url=http://alertstore.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}/
     maya.alertstore.tablemanager.url=http://alertstore-tablemanager.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}/
-    maya.alertstore.ingress.url={{ .Values.server.protocol }}://{{ .Values.server.host }}/alertstore/alerts
+    maya.alertstore.ingress.url={{ .Values.server.protocol }}://{{ .Values.server.url }}/alertstore/alerts
     maya.grafana.admin.password=admin
     maya.grafana.url=http://maya-grafana-service.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}:3000/
     maya.grafana.reporter.url=http://maya-grafana-service.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}:8686/
@@ -60,7 +59,7 @@ data:
     slack.config.bot.client.secret={{ .Values.server.slackConfigBotClientSecret }}
     slack.config.bot.oauth.url=https://slack.com/oauth/authorize?client_id={{ .Values.server.slackConfigBotClientId }}&scope=bot\,incoming-webhook\,commands
     slack.notification.welcome.message={{ .Values.server.slackNotificationWelcomeMessage }}
-    chatbot.alert.url={{ .Values.server.protocol }}://{{ .Values.server.host }}/chat-server/maya-events
+    chatbot.alert.url={{ .Values.server.protocol }}://{{ .Values.server.url }}/chat-server/maya-events
     feature.kiali.disable={{ .Values.server.featureKialiDisable }}
     analytics.google.code={{ .Values.server.analyticsGoogleCode }}
     feature.analytics.disable={{ .Values.server.featureAnalyticsDisable }}

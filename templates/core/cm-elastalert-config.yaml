@@ -59,4 +59,4 @@ data:
     # sending the alert until this time period has elapsed
     alert_time_limit:
       days: 2
-{{- end }}
+{{- end -}}

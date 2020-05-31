@@ -22,4 +22,4 @@ data:
     auto_sign_up = true
     disable_signout_menu = true
     disable_login_form = true
-{{- end }}
+{{- end -}}

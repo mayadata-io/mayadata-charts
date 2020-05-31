@@ -30,4 +30,4 @@ data:
       hash: "$2y$12$l4fIoNa87KAUbQdf0fvCrOEVKHbILOaxsRDMlcTIEfFjMLCVDIsau"
       reserved: true
       description: "Demo kibanaserver user"
-{{- end }}    
+{{- end -}}    

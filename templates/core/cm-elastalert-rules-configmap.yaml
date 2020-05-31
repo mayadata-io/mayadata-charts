@@ -106,4 +106,4 @@ data:
           COMPONENTTYPE: '{component_type}'
         startsAt: '{@timestamp}'
         endsAt: '{@timestamp}'
-{{- end }}
+{{- end -}}
