@@ -1,8 +1,0 @@
-{{- if .Values.type.installdirector -}}
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: elasticsearch-logging
-  labels:
-    k8s-app: elasticsearch-logging
-{{- end }}

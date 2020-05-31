@@ -1,0 +1,26 @@
+apiVersion: v1
+entries:
+  oep-charts-internal:
+  - apiVersion: v1
+    appVersion: 1.9.0
+    created: "2020-06-01T01:38:01.454448112+05:30"
+    description: This is an on-premise installation of DirectorOnline
+    digest: e16419604df5d9a6a6ab9364984366361974540d19055f9e936de601dba5ebe4
+    home: https://www.mayadata.io/
+    icon: https://raw.githubusercontent.com/mayadata-io/director-charts/master/oep-charts-internal-logo.png
+    keywords:
+    - monitoring
+    - visualization
+    - efk
+    - cloud-native-storage
+    - storage
+    maintainers:
+    - email: support@mayadata.io
+      name: MayaData
+    name: oep-charts-internal
+    sources:
+    - https://github.com/mayadata-io/oep-charts-internal.git
+    urls:
+    - oep-charts-internal-1.9.0.tgz
+    version: 1.9.0
+generated: "2020-06-01T01:38:01.397270661+05:30"
