@@ -10,10 +10,7 @@ type:
 server:
   release: 1.9.0-RC2.ee
   dockerSecret: directoronprem-registry-secret
-  protocol: http
-  host:
-  httpNodePort: 30380
-  httpsNodePort: 30381
+  url:
   apiAuthAccessMode: unrestricted
   serverDefaultAccessGrant: true
   apiUiEnabled: true
