@@ -6,7 +6,7 @@
 platform: Default
 type: 
   installdirector: true 
-  installopenesbs: fasle
+  installopenebs: true
 server:
   release: 1.9.0-RC2.ee
   dockerSecret: directoronprem-registry-secret
