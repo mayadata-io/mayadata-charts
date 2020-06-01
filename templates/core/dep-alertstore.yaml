@@ -16,7 +16,7 @@ spec:
       serviceAccountName: sa-maya-io
       initContainers:
       - name: init-agent
-        image: registry.mayadata.io/maya-init:1.0.0
+        image: {{ .Values.imageregistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -32,7 +32,7 @@ spec:
              echo $MAYA
           done
       - name: as-wait-for-cassandra
-        image: registry.mayadata.io/maya-init:1.0.0
+        image: {{ .Values.imageregistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -48,7 +48,7 @@ spec:
              echo $COUNT
           done
       - name: as-wait-for-as-tablemanager
-        image: registry.mayadata.io/maya-init:1.0.0
+        image: {{ .Values.imageregistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -65,7 +65,7 @@ spec:
           done
       containers:
       - name: alertstore
-        image: registry.mayadata.io/alertstore:{{ .Values.server.release }}
+        image: {{ .Values.imageregistry }}/alertstore:{{ .Values.server.release }}
         imagePullPolicy: Always
         args:
         - -server.http-listen-port=80

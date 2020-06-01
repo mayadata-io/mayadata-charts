@@ -10,7 +10,7 @@ type:
 server:
   release: 1.9.0-RC2.ee
   dockerSecret: directoronprem-registry-secret
-  url:
+  url: http://18.218.164.97
   apiAuthAccessMode: unrestricted
   serverDefaultAccessGrant: true
   apiUiEnabled: true
@@ -153,6 +153,7 @@ nginx-ingress:
     create: true
   serviceAccount:
     create: true
+imageregistry: registry.mayadata.io 
 #######
 # Default values for openebs.
 # This is a YAML-formatted file.

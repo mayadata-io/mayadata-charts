@@ -16,7 +16,7 @@ spec:
       serviceAccountName: sa-maya-io
       initContainers:
       - name: cf-wait-for-crb
-        image: registry.mayadata.io/maya-init:1.0.0
+        image: {{ .Values.imageregistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -33,7 +33,7 @@ spec:
           done
       initContainers:
       - name: cf-wait-for-configs-db
-        image: registry.mayadata.io/maya-init:1.0.0
+        image: {{ .Values.imageregistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -50,7 +50,7 @@ spec:
           done
       containers:
       - name: configs
-        image: registry.mayadata.io/cortex-configs:{{ .Values.server.release }}
+        image: {{ .Values.imageregistry }}/cortex-configs:{{ .Values.server.release }}
         imagePullPolicy: Always
         args:
         - -server.http-listen-port=80

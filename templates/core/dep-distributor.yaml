@@ -16,7 +16,7 @@ spec:
       serviceAccountName: sa-maya-io
       initContainers:
       - name: di-wait-for-crb
-        image: registry.mayadata.io/maya-init:1.0.0
+        image: {{ .Values.imageregistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -32,7 +32,7 @@ spec:
              echo $MAYA
           done
       - name: di-wait-for-consul
-        image: registry.mayadata.io/maya-init:1.0.0
+        image: {{ .Values.imageregistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -48,7 +48,7 @@ spec:
              echo $COUNT
           done
       - name: di-wait-for-ingester
-        image: registry.mayadata.io/maya-init:1.0.0
+        image: {{ .Values.imageregistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"

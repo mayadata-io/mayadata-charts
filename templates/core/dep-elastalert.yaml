@@ -18,7 +18,7 @@ spec:
       serviceAccountName: sa-maya-io
       initContainers:
       - name: rl-wait-for-crb
-        image: registry.mayadata.io/maya-init:1.0.0
+        image: {{ .Values.imageregistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -34,7 +34,7 @@ spec:
              echo $MAYA
           done
       - name: am-wait-for-maya-io
-        image: registry.mayadata.io/maya-init:1.0.0
+        image: {{ .Values.imageregistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -51,7 +51,7 @@ spec:
           done
       containers:
       - name: elastalert
-        image: registry.mayadata.io/elastalert:{{ .Values.server.release }}
+        image: {{ .Values.imageregistry }}/elastalert:{{ .Values.server.release }}
         ports:
         - containerPort: 3030
           name: http
