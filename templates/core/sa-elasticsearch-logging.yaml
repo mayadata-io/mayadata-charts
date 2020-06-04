@@ -1,4 +1,4 @@
-{{- if .Values.type.installdirector -}}
+{{- if .Values.type.installDirector -}}
 apiVersion: v1
 kind: ServiceAccount
 metadata:

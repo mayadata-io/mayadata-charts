@@ -1,4 +1,4 @@
-{{- if .Values.type.installopenebs -}}
+{{- if .Values.type.installOpenebs -}}
 {{- if and .Values.rbac.create .Values.rbac.pspEnabled }}
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy

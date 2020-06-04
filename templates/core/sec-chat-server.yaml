@@ -1,4 +1,4 @@
-{{- if .Values.type.installdirector -}}
+{{- if .Values.type.installDirector -}}
 apiVersion: v1
 data:
   ADMIN_API_KEY: T0RsRk5qWkVRMFZGT0RkQ1JUTkdOekV3TVRJNmNUTjJkM2hsUW5Wa1NFaFJkbWd5WlhWYWNuaDFSRUp0TVVKeU9YYzJaa05HZFhsMWIyaFNNdz09

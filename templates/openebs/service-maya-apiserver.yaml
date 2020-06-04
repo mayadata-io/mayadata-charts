@@ -1,4 +1,4 @@
-{{- if .Values.type.installopenebs -}}
+{{- if .Values.type.installOpenebs -}}
 {{- if .Values.apiserver.enabled }}
 apiVersion: v1
 kind: Service

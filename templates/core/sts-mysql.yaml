@@ -1,4 +1,4 @@
-{{- if .Values.type.installdirector -}}
+{{- if .Values.type.installDirector -}}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
