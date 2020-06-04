@@ -27,7 +27,8 @@ The following table lists the configurable parameters of the Kubera chart and th
 
 | Parameter                                       | Description                                   | Default                                   |
 | ------------------------------------------------|-----------------------------------------------| ------------------------------------------|
-| `platform`                                      | Choose your kubernetes platform          |      default                                |
+| `platform`                                      | Choose your kubernetes platform          |           default                                |
+| `type`                                          | Choose your installation DOP,OpenEBS or Both  |      default Both                               |
 | `server.dockerSecret`                           | Docker secret for pulling the images          |      none                                 |
 | `server.protocol`                               | http/https protocol for accessing the UI      |      http                                 |
 | `server.url`                                    | url/IP address                    |      none                                 |
@@ -80,6 +81,13 @@ The following table lists the configurable parameters of the Kubera chart and th
 | `alertStore.replicationFactor`                  | TBD                                           |      1                                    |
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
+# type
+   The `type` flag let you choose what you want to install with Kubera.    
+     Default value is installDirector true, installOpenebs true which allows to install both components OpenEBS and Director.
+     
+    - To install Openebs only `--set type.installDirector=false`
+    - To install Director only `--set type.installOpenebs=false`
+
 
 # Platform
    The `Platform` flag let you choose which platfrom you want to intall.
@@ -99,3 +107,5 @@ Once DOP pods are in running state, it can be accessible from browser using Node
 > **Tip**: You can use the default [values.yaml](values.yaml)
 
 > **Tip**: Initial login credentails for Administrator. Username: **Administrator** Password: **password**
+
+    
