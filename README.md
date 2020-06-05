@@ -21,9 +21,9 @@ helm repo add kubera https://charts.mayadata.io/
 ```
 
 ```
-helm install dop directoronprem/oep-charts-internal –set server.url=<http://>
+helm install kubera kubera/kubera-charts –set server.url=<http://>
      or
-helm install kubera kubera/kubera -f values.yaml
+helm install kubera kubera/kubera-charts -f values.yaml
 ```
 
 ## Configuration
