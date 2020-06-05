@@ -1,0 +1,20 @@
+{{- if .Values.type.installDirector -}}
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+  name: maya-grafana-service
+spec:
+  ports:
+    - port: 3000
+      protocol: TCP
+      targetPort: 3000
+      name: grafana
+    - port: 8686
+      protocol: TCP
+      targetPort: 8686
+      name: grafana-report
+  selector:
+    app: maya-grafana
+  type: ClusterIP
+{{- end }}

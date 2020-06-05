@@ -1,0 +1,13 @@
+{{- if .Values.type.installDirector -}}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: grafana-claim
+spec:
+  storageClassName: {{ .Values.grafana.storageClass }}
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.grafana.storageCapacity }}
+{{- end }}

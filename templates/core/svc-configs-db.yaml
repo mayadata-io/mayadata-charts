@@ -1,0 +1,11 @@
+{{- if .Values.type.installDirector -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: configs-db
+spec:
+  ports:
+    - port: 5432
+  selector:
+    name: configs-db
+{{- end }}

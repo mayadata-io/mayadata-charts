@@ -1,9 +1,9 @@
 apiVersion: v1
-version: 1.9.0
-name: directoronprem
-appVersion: 1.9.0
+version: 1.10.0
+name: oep-charts-internal
+appVersion: 1.10.0
 description: This is an on-premise installation of DirectorOnline
-icon: https://raw.githubusercontent.com/mayadata-io/director-charts/master/directoronprem-logo.png
+icon: https://raw.githubusercontent.com/mayadata-io/kubera-charts/master/oep-charts-internal-logo.png
 home: https://www.mayadata.io/
 keywords:
   - monitoring
@@ -12,7 +12,7 @@ keywords:
   - cloud-native-storage
   - storage
 sources:
-  - https://github.com/mayadata-io/director-charts.git
+  - https://github.com/mayadata-io/kubera-charts.git
 maintainers:
   - name: MayaData
     email: support@mayadata.io

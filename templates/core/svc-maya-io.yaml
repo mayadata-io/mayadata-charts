@@ -1,0 +1,16 @@
+{{- if .Values.type.installDirector -}}
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: maya-io
+  name: maya-io
+spec:
+  type: ClusterIP
+  ports:
+  - name: mayaport
+    port: 8080
+    protocol: TCP
+  selector:
+    app: maya-io
+{{- end }}
