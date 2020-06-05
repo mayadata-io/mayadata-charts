@@ -14,11 +14,11 @@ This chart bootstraps Kubera on a [Kubernetes](http://kubernetes.io) cluster usi
 
 ## Installing Kubera
 ```
-helm repo add directoronprem https://charts.mayadata.io/
+helm repo add kubera https://charts.mayadata.io/
 ```
 
 ```
-helm install --namespace <yournamespace> -f values.yaml
+helm install --namespace <yournamespace> kubera kubera/kubera -f values.yaml
 ```
 
 ## Configuration

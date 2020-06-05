@@ -1,9 +1,9 @@
 apiVersion: v1
 version: 1.10.0
-name: oep-charts-internal
+name: kubera-charts
 appVersion: 1.10.0
-description: This is an on-premise installation of DirectorOnline
-icon: https://raw.githubusercontent.com/mayadata-io/kubera-charts/master/oep-charts-internal-logo.png
+description: The Kubera is a complete solution for the use of Kubernetes as a data layer. It includes Director and OpenEBS 
+icon: https://raw.githubusercontent.com/mayadata-io/kubera-charts/master/mayadata-icon.png
 home: https://www.mayadata.io/
 keywords:
   - monitoring
