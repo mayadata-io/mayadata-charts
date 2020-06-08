@@ -10,7 +10,7 @@ data:
     # The public facing domain name used to access grafana from a browser
     domain = {{ .Values.server.url }}
     # If you use reverse proxy and sub path specify full url (with sub path)
-    root_url = %(protocol)s://%(domain)s:/grafana
+    root_url = %(domain)s:/grafana
     [users]
     auto_assign_org = false
     # Default UI theme ("dark" or "light")
