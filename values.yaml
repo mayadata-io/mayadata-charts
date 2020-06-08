@@ -1,0 +1,322 @@
+# Default values for DirectorOnPrem.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# Update platfrom according to your Platform, Default include(GKE,Packet) and SUSE
+platform: Default
+type: 
+  installDirector: true 
+  installOpenebs: true
+server:
+  release: 1.9.0-RC2.ee
+  dockerSecret: directoronprem-registry-secret
+  url: 
+  apiAuthAccessMode: unrestricted
+  serverDefaultAccessGrant: true
+  apiUiEnabled: true
+  maxMemberCountInOneProject: 10
+  setupName: directoronprem
+  apiAuthExternalProviderEnabled: false
+  apiAuthExternalProviderConfigured:
+  apiAuthInternalProviderEnabled: true
+  apiAuthInternalProviderConfigured: localAuthConfig
+  apiAuthGithubClientId:
+  apiAuthGithubClientSecret:
+  apiAuthGoogleClientId:
+  apiAuthGoogleClientSecret:
+  clusterDomain: cluster.local
+  featureSubscriptionDisable: false
+  subscriptionType: internal
+  featureBillingDisable: true
+  billingType: external
+  featureEmailDisable: true
+  senderEmailAddress:
+  senderEmailPassword:
+  featureDocsDisable: false
+  docsUrl: https://help.mayadata.io/hc/en-us
+  featureChatBotDisable: true
+  slackConfigBotClientId:
+  slackConfigBotClientSecret:
+  slackNotificationWelcomeMessage:
+  featureKialiDisable: true
+  analyticsGoogleCode:
+  autoconnectLocalCluster: true
+  # The host URL of the AD server
+  adHost:
+  # The base domain of the AD server
+  adDomain:
+  # The port number on which the AD server is listening
+  adPort: 636
+  adTLS: true
+  # an ADuser with read access to the AD server, someuser@domain.d1adSvcAccUser:
+  adSvcAccUser:
+  adSvcAccPwd:
+  adNameField: givenName
+  # default objectclass for users
+  adUserObjectClass: person
+  adGroupObjectClass: group
+  # connection timeout in milliseconds
+  adConnectionTimeout: 5000
+
+mysql:
+  storageClass: openebs-hostpath
+  storageCapacity: 50Gi
+
+elasticSearch:
+  storageClass: openebs-hostpath
+  storageCapacity: 50Gi
+  replicas: 1
+
+cassandra:
+  storageClass: openebs-hostpath
+  storageCapacity: 50Gi
+  replicas: 1
+
+mayaStore:
+  storageClass: openebs-hostpath
+  storageCapacity: 10Gi
+
+grafana:
+  storageClass: openebs-hostpath
+  storageCapacity: 50Gi
+
+cortex:
+  replicationFactor: 1
+  timeout: 5s
+
+alertStore:
+  replicationFactor: 1
+
+ingester:
+  replicas: 1
+
+querier:
+  replicas: 1
+
+curator:
+  retentionPeriod: 30
+## doc/charts/nginx/index.md
+## doc/architecture/decisions.md#nginx-ingress
+## Installation & configuration of charts/nginx-ingress
+nginx-ingress:
+  enabled: true
+  tcpExternalConfig: "true"
+  controller:
+    kind: DaemonSet
+    config:
+      hsts-include-subdomains: "false"
+      server-name-hash-bucket-size: "256"
+      enable-vts-status: "true"
+      use-http2: "false"
+      ssl-ciphers: "ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4"
+      ssl-protocols: "TLSv1.3 TLSv1.2"
+      server-tokens: "false"
+    extraArgs:
+      force-namespace-isolation: ""
+    service:
+      enabled: false
+      type: NodePort
+      nodePorts:
+        http: 30380
+        https: 30381
+    resources:
+      requests:
+        cpu: 100m
+        memory: 100Mi
+    publishService:
+      enabled: true
+    replicaCount: 1
+    minAvailable: 1
+    scope:
+      enabled: true
+    stats:
+      enabled: true
+    metrics:
+      enabled: true
+      service:
+        annotations:
+          prometheus.io/scrape: "true"
+          prometheus.io/port: "10254"
+  defaultBackend:
+    minAvailable: 1
+    replicaCount: 2
+    resources:
+      requests:
+        cpu: 5m
+        memory: 5Mi
+  rbac:
+    create: true
+  serviceAccount:
+    create: true
+imageregistry: registry.mayadata.io 
+#######
+# Default values for openebs.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+rbac:
+  # Specifies whether RBAC resources should be created
+  create: true
+  pspEnabled: false
+
+serviceAccount:
+  create: true
+  name:
+
+release:
+  # "openebs.io/version" label for control plane components
+  version: "1.9.0"
+
+image:
+  pullPolicy: IfNotPresent
+
+apiserver:
+  enabled: true
+  image: "quay.io/openebs/m-apiserver"
+  imageTag: "1.9.0"
+  replicas: 1
+  ports:
+    externalPort: 5656
+    internalPort: 5656
+  sparse:
+    enabled: "false"
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  healthCheck:
+    initialDelaySeconds: 30
+    periodSeconds: 60
+
+defaultStorageConfig:
+  enabled: "true"
+
+# Directory used by the OpenEBS to store debug information and so forth
+# that are generated in the course of running OpenEBS containers.
+varDirectoryPath:
+  baseDir: "/var/openebs"
+
+provisioner:
+  enabled: true
+  image: "quay.io/openebs/openebs-k8s-provisioner"
+  imageTag: "1.9.0"
+  replicas: 1
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  healthCheck:
+    initialDelaySeconds: 30
+    periodSeconds: 60
+
+localprovisioner:
+  enabled: true
+  image: "quay.io/openebs/provisioner-localpv"
+  imageTag: "1.9.0"
+  replicas: 1
+  basePath: "/var/openebs/local"
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  healthCheck:
+    initialDelaySeconds: 30
+    periodSeconds: 60
+
+snapshotOperator:
+  enabled: true
+  controller:
+    image: "quay.io/openebs/snapshot-controller"
+    imageTag: "1.9.0"
+  provisioner:
+    image: "quay.io/openebs/snapshot-provisioner"
+    imageTag: "1.9.0"
+  replicas: 1
+  upgradeStrategy: "Recreate"
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  healthCheck:
+    initialDelaySeconds: 30
+    periodSeconds: 60
+
+ndm:
+  enabled: true
+  image: "quay.io/openebs/node-disk-manager-amd64"
+  imageTag: "v0.4.9"
+  sparse:
+    path: "/var/openebs/sparse"
+    size: "10737418240"
+    count: "0"
+  filters:
+    excludeVendors: "CLOUDBYT,OpenEBS"
+    includePaths: ""
+    excludePaths: "loop,fd0,sr0,/dev/ram,/dev/dm-,/dev/md"
+  probes:
+    enableSeachest: false
+  nodeSelector: {}
+  tolerations: []
+  healthCheck:
+    initialDelaySeconds: 30
+    periodSeconds: 60
+
+ndmOperator:
+  enabled: true
+  image: "quay.io/openebs/node-disk-operator-amd64"
+  imageTag: "v0.4.9"
+  replicas: 1
+  upgradeStrategy: Recreate
+  nodeSelector: {}
+  tolerations: []
+  healthCheck:
+    initialDelaySeconds: 30
+    periodSeconds: 60
+  readinessCheck:
+    initialDelaySeconds: 4
+    periodSeconds: 10
+    failureThreshold: 1
+
+webhook:
+  enabled: true
+  image: "quay.io/openebs/admission-server"
+  imageTag: "1.9.0"
+  failurePolicy: Ignore
+  replicas: 1
+  healthCheck:
+    initialDelaySeconds: 30
+    periodSeconds: 60
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+jiva:
+  image: "quay.io/openebs/jiva"
+  imageTag: "1.9.0"
+  replicas: 3
+  defaultStoragePath: "/var/openebs"
+
+cstor:
+  pool:
+    image: "quay.io/openebs/cstor-pool"
+    imageTag: "1.9.0"
+  poolMgmt:
+    image: "quay.io/openebs/cstor-pool-mgmt"
+    imageTag: "1.9.0"
+  target:
+    image: "quay.io/openebs/cstor-istgt"
+    imageTag: "1.9.0"
+  volumeMgmt:
+    image: "quay.io/openebs/cstor-volume-mgmt"
+    imageTag: "1.9.0"
+
+helper:
+  image: "quay.io/openebs/linux-utils"
+  imageTag: "1.9.0"
+
+policies:
+  monitoring:
+    enabled: true
+    image: "quay.io/openebs/m-exporter"
+    imageTag: "1.9.0"
+
+analytics:
+  enabled: true
+  # Specify in hours the duration after which a ping event needs to be sent.
+  pingInterval: "24h"
