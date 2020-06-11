@@ -30,8 +30,9 @@ helm install kubera kubera/kubera-charts -f values.yaml
 
 The following table lists the configurable parameters of the Kubera chart and their default values.
 
-| Parameter                                       | Description                                   | Default                                   |
 
+| Parameter                                       | Description                                   | Default                                   |
+| ------------------------------------------------|-----------------------------------------------| ------------------------------------------|
 | `platform`                                      | Choose your kubernetes platform          |           default                                |
 | `type`                                          | Choose your installation DOP,OpenEBS or Both  |      default Both                               |
 | `server.dockerSecret`                           | Docker secret for pulling the images          |      none                                 |
