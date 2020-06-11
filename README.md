@@ -85,7 +85,10 @@ The following table lists the configurable parameters of the Kubera chart and th
 | `cortex.timeout`                                | TBD                                           |      20s                                  |
 |                                                 |                                               |                                           |
 | `alertStore.replicationFactor`                  | TBD                                           |      1                                    |
+
 -----------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 # type
    The `type` flag let you choose what you want to install with Kubera.    
