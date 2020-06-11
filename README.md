@@ -33,7 +33,6 @@ The following table lists the configurable parameters of the Kubera chart and th
 | Parameter                                       | Description                                   | Default                                   |
 
 | ------------------------------------------------|-----------------------------------------------| ------------------------------------------|
-
 | `platform`                                      | Choose your kubernetes platform          |           default                                |
 | `type`                                          | Choose your installation DOP,OpenEBS or Both  |      default Both                               |
 | `server.dockerSecret`                           | Docker secret for pulling the images          |      none                                 |
