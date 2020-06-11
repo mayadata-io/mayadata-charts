@@ -8,7 +8,7 @@ type:
   installDirector: true 
   installOpenebs: true
 server:
-  release: 1.9.0-RC2.ee
+  release: 1.10.0-ee
   dockerSecret: directoronprem-registry-secret
   url: 
   apiAuthAccessMode: unrestricted
@@ -165,15 +165,15 @@ serviceAccount:
 
 release:
   # "openebs.io/version" label for control plane components
-  version: "1.9.0"
+  version: "1.10.0-ee"
 
 image:
   pullPolicy: IfNotPresent
 
 apiserver:
   enabled: true
-  image: "quay.io/openebs/m-apiserver"
-  imageTag: "1.9.0"
+  image: "mayadataio/m-apiserver"
+  imageTag: "1.10.0-ee"
   replicas: 1
   ports:
     externalPort: 5656
@@ -197,8 +197,8 @@ varDirectoryPath:
 
 provisioner:
   enabled: true
-  image: "quay.io/openebs/openebs-k8s-provisioner"
-  imageTag: "1.9.0"
+  image: "mayadataio/openebs-k8s-provisioner"
+  imageTag: "1.10.0-ee"
   replicas: 1
   nodeSelector: {}
   tolerations: []
@@ -209,8 +209,8 @@ provisioner:
 
 localprovisioner:
   enabled: true
-  image: "quay.io/openebs/provisioner-localpv"
-  imageTag: "1.9.0"
+  image: "mayadataio/provisioner-localpv"
+  imageTag: "1.10.0-ee"
   replicas: 1
   basePath: "/var/openebs/local"
   nodeSelector: {}
@@ -223,11 +223,11 @@ localprovisioner:
 snapshotOperator:
   enabled: true
   controller:
-    image: "quay.io/openebs/snapshot-controller"
-    imageTag: "1.9.0"
+    image: "mayadataio/snapshot-controller"
+    imageTag: "1.10.0-ee"
   provisioner:
-    image: "quay.io/openebs/snapshot-provisioner"
-    imageTag: "1.9.0"
+    image: "mayadataio/snapshot-provisioner"
+    imageTag: "1.10.0-ee"
   replicas: 1
   upgradeStrategy: "Recreate"
   nodeSelector: {}
@@ -239,8 +239,8 @@ snapshotOperator:
 
 ndm:
   enabled: true
-  image: "quay.io/openebs/node-disk-manager-amd64"
-  imageTag: "v0.4.9"
+  image: "mayadataio/node-disk-manager-amd64"
+  imageTag: "0.5.0-ee"
   sparse:
     path: "/var/openebs/sparse"
     size: "10737418240"
@@ -259,8 +259,8 @@ ndm:
 
 ndmOperator:
   enabled: true
-  image: "quay.io/openebs/node-disk-operator-amd64"
-  imageTag: "v0.4.9"
+  image: "mayadataio/node-disk-operator-amd64"
+  imageTag: "0.5.0-ee"
   replicas: 1
   upgradeStrategy: Recreate
   nodeSelector: {}
@@ -275,8 +275,8 @@ ndmOperator:
 
 webhook:
   enabled: true
-  image: "quay.io/openebs/admission-server"
-  imageTag: "1.9.0"
+  image: "mayadataio/admission-server"
+  imageTag: "1.10.0-ee"
   failurePolicy: Ignore
   replicas: 1
   healthCheck:
@@ -287,34 +287,34 @@ webhook:
   affinity: {}
 
 jiva:
-  image: "quay.io/openebs/jiva"
-  imageTag: "1.9.0"
+  image: "mayadataio/jiva"
+  imageTag: "1.10.0-ee"
   replicas: 3
   defaultStoragePath: "/var/openebs"
 
 cstor:
   pool:
-    image: "quay.io/openebs/cstor-pool"
-    imageTag: "1.9.0"
+    image: "mayadataio/cstor-pool"
+    imageTag: "1.10.0-ee"
   poolMgmt:
-    image: "quay.io/openebs/cstor-pool-mgmt"
-    imageTag: "1.9.0"
+    image: "mayadataio/cstor-pool-mgmt"
+    imageTag: "1.10.0-ee"
   target:
-    image: "quay.io/openebs/cstor-istgt"
-    imageTag: "1.9.0"
+    image: "mayadataio/cstor-istgt"
+    imageTag: "1.10.0-ee"
   volumeMgmt:
-    image: "quay.io/openebs/cstor-volume-mgmt"
-    imageTag: "1.9.0"
+    image: "mayadataio/cstor-volume-mgmt"
+    imageTag: "1.10.0-ee"
 
 helper:
-  image: "quay.io/openebs/linux-utils"
-  imageTag: "1.9.0"
+  image: "mayadataio/linux-utils"
+  imageTag: "1.10.0-ee"
 
 policies:
   monitoring:
     enabled: true
-    image: "quay.io/openebs/m-exporter"
-    imageTag: "1.9.0"
+    image: "mayadataio/m-exporter"
+    imageTag: "1.10.0-ee"
 
 analytics:
   enabled: true
