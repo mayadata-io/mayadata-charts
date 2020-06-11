@@ -1,0 +1,27 @@
+apiVersion: v1
+entries:
+  kubera-charts:
+  - apiVersion: v1
+    appVersion: 1.10.0
+    created: "2020-06-11T20:07:40.107123928Z"
+    description: Kubera is a complete solution for the use of Kubernetes as a data
+      layer. It includes Director and OpenEBS
+    digest: b92df90c947a56d00f941b16e82264a2e457c6a72fbf7569c2307e4c038162b4
+    home: https://www.mayadata.io/
+    icon: https://raw.githubusercontent.com/mayadata-io/kubera-charts/master/mayadata-icon.png
+    keywords:
+    - monitoring
+    - visualization
+    - efk
+    - cloud-native-storage
+    - storage
+    maintainers:
+    - email: support@mayadata.io
+      name: MayaData
+    name: kubera-charts
+    sources:
+    - https://github.com/mayadata-io/kubera-charts.git
+    urls:
+    - https://charts.mayadata.io/kubera-charts-1.10.0.tgz
+    version: 1.10.0
+generated: "2020-06-11T20:07:40.097081668Z"
