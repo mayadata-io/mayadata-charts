@@ -31,6 +31,7 @@ helm install kubera kubera/kubera-charts -f values.yaml
 The following table lists the configurable parameters of the Kubera chart and their default values.
 
 | Parameter                                       | Description                                   | Default                                   |
+
 | ------------------------------------------------|-----------------------------------------------| ------------------------------------------|
 
 | `platform`                                      | Choose your kubernetes platform          |           default                                |
