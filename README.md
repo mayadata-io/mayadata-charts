@@ -21,7 +21,7 @@ helm repo add kubera https://charts.mayadata.io/
 ```
 
 ```
-helm install kubera kubera/kubera-charts –set server.url=<http://>
+helm install kubera kubera/kubera-charts --set server.url=<http://>
      or
 helm install kubera kubera/kubera-charts -f values.yaml
 ```
@@ -34,7 +34,7 @@ The following table lists the configurable parameters of the Kubera chart and th
 | Parameter                                       | Description                                   | Default                                   |
 | ------------------------------------------------|-----------------------------------------------| ------------------------------------------|
 | `platform`                                      | Choose your kubernetes platform          |           default                                |
-| `type`                                          | Choose your installation DOP,OpenEBS or Both  |      default Both                               |
+| `type`                                          | Choose your installation DOP,OpenEBS or Both  |      true                               |
 | `server.dockerSecret`                           | Docker secret for pulling the images          |      none                                 |
 | `server.protocol`                               | http/https protocol for accessing the UI      |      http                                 |
 | `server.url`                                    | url/IP address                    |      none                                 |
@@ -69,17 +69,17 @@ The following table lists the configurable parameters of the Kubera chart and th
 | `server.autoconnectLocalCluster`              | Autoconnect host cluster to openebs director |       true                                |
 | `server.maxMemberCountInOneProject`           | Maximum member count in one project. Some special values -  0 -> You can add as many members as you want. 1 -> You can not add any member(Disable teaming).         |       10                                |
 |                                                 |                                               |                                           |
-| `mysql.storageClass`                            | storage engine/backend for MySQL              |      standard                             |
+| `mysql.storageClass`                            | storage engine/backend for MySQL              |      openebs-hostpath                             |
 |                                                 |                                               |                                           |
-| `elasticSearch.storageClass`                    | storage engine/backend for your logs storage  |      standard                             |
+| `elasticSearch.storageClass`                    | storage engine/backend for your logs storage  |      openebs-hostpath                            |
 | `elasticSearch.replicas`                        | storage replication for logs         |      1                                    |
 |                                                 |                                               |                                           |
-| `cassandra.storageClass`                        | storage engine/backend for Cassandra          |      standard                             |
+| `cassandra.storageClass`                        | storage engine/backend for Cassandra          |      openebs-hostpath                             |
 | `cassandra.replicas`                            | storage replication for Cassandra             |      1                                    |
 |                                                 |                                               |                                           |
-| `mayaStore.storageClass`                        | storage engine/backend for mayastore          |      standard                             |
+| `mayaStore.storageClass`                        | storage engine/backend for mayastore          |      openebs-hostpath                             |
 |                                                 |                                               |                                           |
-| `grafana.storageClass`                          | storage engine/backend for grafana            |      standard                             |
+| `grafana.storageClass`                          | storage engine/backend for grafana            |      openebs-hostpath                             |
 |                                                 |                                               |                                           |
 | `cortex.replicationFactor`                      | TBD                                           |      1                                    |
 | `cortex.timeout`                                | TBD                                           |      20s                                  |
@@ -90,12 +90,12 @@ The following table lists the configurable parameters of the Kubera chart and th
 
 
 
-# type
+# Type
    The `type` flag let you choose what you want to install with Kubera.    
      Default value is installDirector true, installOpenebs true which allows to install both components OpenEBS and Director.
      
-    - To install Openebs only `--set type.installDirector=false`
-    - To install Director only `--set type.installOpenebs=false`
+    - To install Openebs only --set type.installDirector=false
+    - To install Director only --set type.installOpenebs=false
 
 
 # Platform
