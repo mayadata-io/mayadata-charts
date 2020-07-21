@@ -16,7 +16,7 @@ spec:
       serviceAccountName: sa-maya-io
       initContainers:
       - name: init-agent
-        image: {{ .Values.imageregistry }}/maya-init:1.0.0
+        image: {{ .Values.imageRegistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -32,7 +32,7 @@ spec:
              echo $MAYA
           done
       - name: tm-wait-for-cassandra
-        image: {{ .Values.imageregistry }}/maya-init:1.0.0
+        image: {{ .Values.imageRegistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"

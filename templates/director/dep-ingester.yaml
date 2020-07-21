@@ -38,7 +38,7 @@ spec:
       serviceAccountName: sa-maya-io
       initContainers:
       - name: in-wait-for-crb
-        image: {{ .Values.imageregistry }}/maya-init:1.0.0
+        image: {{ .Values.imageRegistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -54,7 +54,7 @@ spec:
              echo $MAYA
           done
       - name: in-wait-for-cassandra
-        image: {{ .Values.imageregistry }}/maya-init:1.0.0
+        image: {{ .Values.imageRegistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -70,7 +70,7 @@ spec:
              echo $COUNT
           done
       - name: in-wait-for-consul
-        image: {{ .Values.imageregistry }}/maya-init:1.0.0
+        image: {{ .Values.imageRegistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -86,7 +86,7 @@ spec:
              echo $COUNT
           done
       - name: in-wait-for-table-manager
-        image: {{ .Values.imageregistry }}/maya-init:1.0.0
+        image: {{ .Values.imageRegistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
