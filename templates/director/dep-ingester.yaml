@@ -103,7 +103,7 @@ spec:
           done
       containers:
       - name: ingester
-        image: quay.io/cortexproject/ingester:master-590e72c6
+        image: {{ template "ingesterImage" . }}
         imagePullPolicy: IfNotPresent
         args:
         - -ingester.join-after=30s
