@@ -7,6 +7,9 @@ platform: Default
 type: 
   installDirector: true 
   installOpenebs: true
+# Update platfrom according to your Image registry 
+useCustomRegistry: false
+imageRegistry: registry.mayadata.io   
 server:
   release: 1.11.0-ee
   dockerSecret: directoronprem-registry-secret
@@ -148,7 +151,6 @@ nginx-ingress:
     create: true
   serviceAccount:
     create: true
-imageregistry: registry.mayadata.io 
 #######
 # Default values for openebs.
 # This is a YAML-formatted file.

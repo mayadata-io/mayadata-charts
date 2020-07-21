@@ -81,7 +81,7 @@ spec:
           done
       containers:
       - name: querier
-        image: quay.io/cortexproject/querier:master-590e72c6
+        image: {{ template "querierImage" . }}
         imagePullPolicy: IfNotPresent
         args:
         - -server.http-listen-port=80

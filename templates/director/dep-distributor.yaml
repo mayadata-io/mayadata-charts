@@ -65,7 +65,7 @@ spec:
           done
       containers:
       - name: distributor
-        image: quay.io/cortexproject/distributor:master-590e72c6
+        image: {{ template "distributorImage" . }}
         imagePullPolicy: IfNotPresent
         args:
         - -log.level=debug

@@ -16,7 +16,7 @@ spec:
       serviceAccountName: sa-maya-io
       initContainers:
       - name: am-wait-for-crb
-        image: {{ .Values.imageregistry }}/maya-init:1.0.0
+        image: {{ .Values.imageRegistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -32,7 +32,7 @@ spec:
              echo $MAYA;
           done
       - name: am-wait-for-configs
-        image: {{ .Values.imageregistry }}/maya-init:1.0.0
+        image: {{ .Values.imageRegistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -48,7 +48,7 @@ spec:
              echo $COUNT
           done
       - name: am-wait-for-maya-io
-        image: {{ .Values.imageregistry }}/maya-init:1.0.0
+        image: {{ .Values.imageRegistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -65,7 +65,7 @@ spec:
           done
       containers:
       - name: alertmanager
-        image: {{ .Values.imageregistry }}/cortex-alertmanager:{{ .Values.server.release }}
+        image: {{ .Values.imageRegistry }}/cortex-alertmanager:{{ .Values.server.release }}
         imagePullPolicy: Always
         args:
         - -log.level=debug

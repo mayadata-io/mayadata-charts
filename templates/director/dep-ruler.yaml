@@ -113,7 +113,7 @@ spec:
           done
       containers:
       - name: ruler
-        image: quay.io/cortexproject/ruler:master-590e72c6
+        image: {{ template "rulerImage" . }}
         imagePullPolicy: IfNotPresent
         args:
         - -log.level=debug

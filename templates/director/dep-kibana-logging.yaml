@@ -24,7 +24,7 @@ spec:
           value: /kibana
         - name: ELASTICSEARCH_HOSTS
           value: http://od-elasticsearch-logging:9200/
-        image: {{ .Values.imageregistry }}/maya-kibana:{{ .Values.server.release }}
+        image: {{ .Values.imageRegistry }}/maya-kibana:{{ .Values.server.release }}
         imagePullPolicy: Always
         name: kibana-logging
         ports:
