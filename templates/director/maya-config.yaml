@@ -81,5 +81,6 @@ data:
     api.auth.ad.group.object.class={{ .Values.server.adGroupObjectClass }}
     server.projectmember.max.limit={{ .Values.server.maxMemberCountInOneProject }}
     feature.demoproject.disable=true
+    installer.custom.imageregistry={{ template "clientImage" . }}
 ---
 {{- end }}
