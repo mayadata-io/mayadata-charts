@@ -102,3 +102,13 @@ Cortex Image to use
     {{ default "default" "quay.io/cortexproject/table-manager:master-590e72c6" -}}
 {{- end -}}
 {{- end -}}
+{{/*
+Client Image to use
+*/}}
+{{- define "clientImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s" .Values.imageRegistry  -}}
+{{- else -}}
+    {{ default "" -}}
+{{- end -}}
+{{- end -}}
