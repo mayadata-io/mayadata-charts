@@ -50,6 +50,7 @@ data:
     maya.docs.url={{ .Values.server.docsUrl }}
     feature.mdape2e.disable=true
     feature.tour.disable=true
+    feature.crm.disable=true
     feature.mayaonpremregistration.disable=true
     feature.cortexquerier.disable=true
     feature.litmus.disable=true
