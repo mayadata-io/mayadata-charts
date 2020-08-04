@@ -105,6 +105,9 @@ nginx-ingress:
   enabled: true
   tcpExternalConfig: "true"
   controller:
+    image:
+      repository: registry.mayadata.io/nginx-ingress-controller
+      tag: "0.27.1"  
     kind: DaemonSet
     config:
       hsts-include-subdomains: "false"
