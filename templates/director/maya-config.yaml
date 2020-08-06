@@ -80,5 +80,6 @@ data:
     api.auth.ad.connection.timeout={{ .Values.server.adConnectionTimeout }}
     api.auth.ad.group.object.class={{ .Values.server.adGroupObjectClass }}
     server.projectmember.max.limit={{ .Values.server.maxMemberCountInOneProject }}
+    installer.custom.imageregistry={{ template "clientImage" . }}
 ---
 {{- end }}
