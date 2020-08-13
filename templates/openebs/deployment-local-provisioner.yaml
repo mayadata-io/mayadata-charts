@@ -34,7 +34,11 @@ spec:
       serviceAccountName: {{ template "openebs.serviceAccountName" . }}
       containers:
       - name: {{ template "openebs.name" . }}-localpv-provisioner
+        {{- if .Values.useCustomRegistry }}
+        image: {{ template "localprovisionerImage" . }}
+        {{ else }}
         image: "{{ .Values.localprovisioner.image }}:{{ .Values.localprovisioner.imageTag }}"
+        {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
         # OPENEBS_IO_K8S_MASTER enables openebs provisioner to connect to K8s

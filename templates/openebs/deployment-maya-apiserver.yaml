@@ -35,7 +35,11 @@ spec:
       serviceAccountName: {{ template "openebs.serviceAccountName" . }}
       containers:
       - name: {{ template "openebs.name" . }}-apiserver
+        {{- if .Values.useCustomRegistry }}
+        image: {{ template "maya-apiserverImage" . }}
+        {{ else }}
         image: "{{ .Values.apiserver.image }}:{{ .Values.apiserver.imageTag }}"
+        {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.apiserver.ports.internalPort }}
