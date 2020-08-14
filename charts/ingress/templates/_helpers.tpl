@@ -115,3 +115,13 @@ Return the appropriate apiVersion for podSecurityPolicy.
 {{- print "extensions/v1beta1" -}}
 {{- end -}}
 {{- end -}}
+{{- define "ingressImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s" .Values.imageRegistry "nginx-ingress-controller:0.27.1" -}}
+{{- end -}}
+{{- end -}}
+{{- define "defaultBackendImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s" .Values.imageRegistry "defaultbackend-amd64:1.5" -}}
+{{- end -}}
+{{- end -}}

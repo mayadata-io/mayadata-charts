@@ -24,7 +24,7 @@ spec:
           value: "maya"
         - name: MYSQL_PASSWORD
           value: "maya"
-        image: mysql:5.7
+        image: {{ template "mysqlImage" . }}
         imagePullPolicy: IfNotPresent
         livenessProbe:
           exec:
@@ -109,7 +109,7 @@ spec:
           # Start a server to send backups when requested by peers.
           exec ncat --listen --keep-open --send-only --max-conns=1 3307 -c \
             "xtrabackup --backup --slave-info --stream=xbstream --host=127.0.0.1 --user=root"
-        image: gcr.io/google-samples/xtrabackup:1.0
+        image: {{ template "xtraBakupImage" . }}
         imagePullPolicy: IfNotPresent
         name: xtrabackup
         ports:
@@ -147,7 +147,7 @@ spec:
           else
             cp /mnt/config-map/slave.cnf /mnt/conf.d/
           fi
-        image: mysql:5.7
+        image: {{ template "mysqlImage" . }}
         imagePullPolicy: IfNotPresent
         name: init-mysql
         resources: {}
@@ -173,7 +173,7 @@ spec:
           ncat --recv-only mysql-$(($ordinal-1)).mysql 3307 | xbstream -x -C /var/lib/mysql
           # Prepare the backup.
           xtrabackup --prepare --target-dir=/var/lib/mysql
-        image: gcr.io/google-samples/xtrabackup:1.0
+        image: {{ template "xtraBakupImage" . }}
         imagePullPolicy: IfNotPresent
         name: clone-mysql
         resources: {}

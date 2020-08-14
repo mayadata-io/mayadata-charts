@@ -7,6 +7,9 @@ platform: Default
 type: 
   installDirector: true 
   installOpenebs: true
+# Update platfrom according to your Image registry 
+useCustomRegistry: &sharedCustomRegistry false
+imageRegistry: &sharedImageRegistry registry.mayadata.io   
 server:
   release: 1.11.0-ee
   dockerSecret: directoronprem-registry-secret
@@ -99,6 +102,8 @@ curator:
 ## doc/architecture/decisions.md#nginx-ingress
 ## Installation & configuration of charts/nginx-ingress
 nginx-ingress:
+  useCustomRegistry: *sharedCustomRegistry
+  imageRegistry: *sharedImageRegistry
   enabled: true
   tcpExternalConfig: "true"
   controller:
@@ -148,7 +153,6 @@ nginx-ingress:
     create: true
   serviceAccount:
     create: true
-imageregistry: registry.mayadata.io 
 #######
 # Default values for openebs.
 # This is a YAML-formatted file.
