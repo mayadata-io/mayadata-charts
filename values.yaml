@@ -11,7 +11,7 @@ type:
 useCustomRegistry: &sharedCustomRegistry false
 imageRegistry: &sharedImageRegistry registry.mayadata.io   
 server:
-  release: 1.11.0-ee
+  release: 1.12.0-ee
   dockerSecret: directoronprem-registry-secret
   url: 
   apiAuthAccessMode: unrestricted
@@ -170,7 +170,7 @@ serviceAccount:
 
 release:
   # "openebs.io/version" label for control plane components
-  version: "1.11.0-ee"
+  version: "1.12.0-ee"
 
 image:
   pullPolicy: IfNotPresent
@@ -178,7 +178,7 @@ image:
 apiserver:
   enabled: true
   image: "mayadataio/m-apiserver"
-  imageTag: "1.11.0-ee"
+  imageTag: "1.12.0-ee"
   replicas: 1
   ports:
     externalPort: 5656
@@ -203,7 +203,7 @@ varDirectoryPath:
 provisioner:
   enabled: true
   image: "mayadataio/openebs-k8s-provisioner"
-  imageTag: "1.11.0-ee"
+  imageTag: "1.12.0-ee"
   replicas: 1
   nodeSelector: {}
   tolerations: []
@@ -215,7 +215,7 @@ provisioner:
 localprovisioner:
   enabled: true
   image: "mayadataio/provisioner-localpv"
-  imageTag: "1.11.0-ee"
+  imageTag: "1.12.0-ee"
   replicas: 1
   basePath: "/var/openebs/local"
   nodeSelector: {}
@@ -229,10 +229,10 @@ snapshotOperator:
   enabled: true
   controller:
     image: "mayadataio/snapshot-controller"
-    imageTag: "1.11.0-ee"
+    imageTag: "1.12.0-ee"
   provisioner:
     image: "mayadataio/snapshot-provisioner"
-    imageTag: "1.11.0-ee"
+    imageTag: "1.12.0-ee"
   replicas: 1
   upgradeStrategy: "Recreate"
   nodeSelector: {}
@@ -245,7 +245,7 @@ snapshotOperator:
 ndm:
   enabled: true
   image: "mayadataio/node-disk-manager-amd64"
-  imageTag: "0.6.0-ee"
+  imageTag: "0.7.0-ee"
   sparse:
     path: "/var/openebs/sparse"
     size: "10737418240"
@@ -265,7 +265,7 @@ ndm:
 ndmOperator:
   enabled: true
   image: "mayadataio/node-disk-operator-amd64"
-  imageTag: "0.6.0-ee"
+  imageTag: "0.7.0-ee"
   replicas: 1
   upgradeStrategy: Recreate
   nodeSelector: {}
@@ -281,7 +281,7 @@ ndmOperator:
 webhook:
   enabled: true
   image: "mayadataio/admission-server"
-  imageTag: "1.11.0-ee"
+  imageTag: "1.12.0-ee"
   failurePolicy: Ignore
   replicas: 1
   healthCheck:
@@ -293,33 +293,33 @@ webhook:
 
 jiva:
   image: "mayadataio/jiva"
-  imageTag: "1.11.0-ee"
+  imageTag: "1.12.0-ee"
   replicas: 3
   defaultStoragePath: "/var/openebs"
 
 cstor:
   pool:
     image: "mayadataio/cstor-pool"
-    imageTag: "1.11.0-ee"
+    imageTag: "1.12.0-ee"
   poolMgmt:
     image: "mayadataio/cstor-pool-mgmt"
-    imageTag: "1.11.0-ee"
+    imageTag: "1.12.0-ee"
   target:
     image: "mayadataio/cstor-istgt"
-    imageTag: "1.11.0-ee"
+    imageTag: "1.12.0-ee"
   volumeMgmt:
     image: "mayadataio/cstor-volume-mgmt"
-    imageTag: "1.11.0-ee"
+    imageTag: "1.12.0-ee"
 
 helper:
   image: "mayadataio/linux-utils"
-  imageTag: "1.11.0-ee"
+  imageTag: "1.12.0-ee"
 
 policies:
   monitoring:
     enabled: true
     image: "mayadataio/m-exporter"
-    imageTag: "1.11.0-ee"
+    imageTag: "1.12.0-ee"
 
 analytics:
   enabled: true
