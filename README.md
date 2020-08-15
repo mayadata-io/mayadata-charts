@@ -35,6 +35,8 @@ The following table lists the configurable parameters of the Kubera chart and th
 | ------------------------------------------------|-----------------------------------------------| ------------------------------------------|
 | `platform`                                      | Choose your kubernetes platform          |           default                                |
 | `type`                                          | Choose your installation DOP,OpenEBS or Both  |      both                               |
+| `useCustomRegistry`                     | Enable to use your custom Image registry          |           false                                |
+| `imageRegistry`                         | Specify your custom Image registry          |           registry.mayadata.io                                |
 | `server.dockerSecret`                           | Docker secret for pulling the images          |      none                                 |
 | `server.protocol`                               | http/https protocol for accessing the UI      |      http                                 |
 | `server.url`                                    | url/IP address                    |      none                                 |
@@ -97,6 +99,11 @@ The following table lists the configurable parameters of the Kubera chart and th
     - To install Openebs only --set type.installDirector=false
     - To install Director only --set type.installOpenebs=false
 
+# UseCustomRegistry & ImageRegistry
+   The `useCustomRegistry` and `imageRegistry` flag let you use your own image registry for Kubera images. 
+      
+    - To use custom image registry  `--set useCustomRegistry=true`
+    - To provide the name of your registry install `--set imageRegistry=registry.mayadata.io`
 
 # Platform
    The `Platform` flag let you choose which platfrom you want to intall.
