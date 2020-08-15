@@ -115,25 +115,61 @@ spec:
         - name: OPENEBS_IO_BASE_DIR
           value: "{{ .Values.varDirectoryPath.baseDir }}"
         - name: OPENEBS_IO_JIVA_CONTROLLER_IMAGE
+          {{- if .Values.useCustomRegistry }}
+          value: "{{ template "jivaImage" .}}
+          {{ else }}
           value: "{{ .Values.jiva.image }}:{{ .Values.jiva.imageTag }}"
+          {{- end }}
         - name: OPENEBS_IO_JIVA_REPLICA_IMAGE
+          {{- if .Values.useCustomRegistry }}
+          value: "{{ template "jivaImage" .}}
+          {{ else }}
           value: "{{ .Values.jiva.image }}:{{ .Values.jiva.imageTag }}"
+          {{- end }}
         - name: OPENEBS_IO_JIVA_REPLICA_COUNT
           value: "{{ .Values.jiva.replicas }}"
         - name: OPENEBS_IO_CSTOR_TARGET_IMAGE
+          {{- if .Values.useCustomRegistry }}
+          value: "{{ template "cstorTargetImage" .}}
+          {{ else }}
           value: "{{ .Values.cstor.target.image }}:{{ .Values.cstor.target.imageTag }}"
+          {{- end }}
         - name: OPENEBS_IO_CSTOR_POOL_IMAGE
+          {{- if .Values.useCustomRegistry }}
+          value: "{{ template "cstorPoolImage" .}}
+          {{ else }}
           value: "{{ .Values.cstor.pool.image }}:{{ .Values.cstor.pool.imageTag }}"
+          {{- end }}
         - name: OPENEBS_IO_CSTOR_POOL_MGMT_IMAGE
+          {{- if .Values.useCustomRegistry }}
+          value: "{{ template "cstorPoolMgmtImage" .}}
+          {{ else }}
           value: "{{ .Values.cstor.poolMgmt.image }}:{{ .Values.cstor.poolMgmt.imageTag }}"
+          {{- end }}
         - name: OPENEBS_IO_CSTOR_VOLUME_MGMT_IMAGE
+          {{- if .Values.useCustomRegistry }}
+          value: "{{ template "cstorVolumeMgmtImage" .}}
+          {{ else }}
           value: "{{ .Values.cstor.volumeMgmt.image }}:{{ .Values.cstor.volumeMgmt.imageTag }}"
+          {{- end }}
         - name: OPENEBS_IO_VOLUME_MONITOR_IMAGE
+          {{- if .Values.useCustomRegistry }}
+          value: "{{ template "monitoringImage" .}}
+          {{ else }}
           value: "{{ .Values.policies.monitoring.image }}:{{ .Values.policies.monitoring.imageTag }}"
+          {{- end }}
         - name: OPENEBS_IO_CSTOR_POOL_EXPORTER_IMAGE
+          {{- if .Values.useCustomRegistry }}
+          value: "{{ template "monitoringImage" .}}
+          {{ else }}
           value: "{{ .Values.policies.monitoring.image }}:{{ .Values.policies.monitoring.imageTag }}"
+          {{- end }}
         - name: OPENEBS_IO_HELPER_IMAGE
+          {{- if .Values.useCustomRegistry }}
+          value: "{{ template "helperImage" .}}
+          {{ else }}
           value: "{{ .Values.helper.image }}:{{ .Values.helper.imageTag }}"
+          {{- end }}
         # OPENEBS_IO_ENABLE_ANALYTICS if set to true sends anonymous usage
         # events to Google Analytics
         - name: OPENEBS_IO_ENABLE_ANALYTICS

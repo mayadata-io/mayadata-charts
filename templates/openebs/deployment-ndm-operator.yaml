@@ -62,7 +62,11 @@ spec:
         - name: OPERATOR_NAME
           value: "node-disk-operator"
         - name: CLEANUP_JOB_IMAGE
+          {{- if .Values.useCustomRegistry }}
+          value: "{{ template "helperImage" .}}
+          {{ else }}
           value: "{{ .Values.helper.image }}:{{ .Values.helper.imageTag }}"
+          {{- end }}
         # Process name used for matching is limited to the 15 characters
         # present in the pgrep output.
         # So fullname can be used here with pgrep (cmd is < 15 chars).

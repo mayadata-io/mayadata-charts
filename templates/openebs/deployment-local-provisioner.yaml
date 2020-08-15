@@ -72,7 +72,11 @@ spec:
         - name: OPENEBS_IO_BASE_PATH
           value: "{{ .Values.localprovisioner.basePath }}"
         - name: OPENEBS_IO_HELPER_IMAGE
+          {{- if .Values.useCustomRegistry }}
+          value: "{{ template "helperImage" .}}
+          {{ else }}
           value: "{{ .Values.helper.image }}:{{ .Values.helper.imageTag }}"
+          {{- end }}
         - name: OPENEBS_IO_INSTALLER_TYPE
           value: "charts-helm"
         # Process name used for matching is limited to the 15 characters
