@@ -28,6 +28,8 @@ The following table lists the configurable parameters of the Kubera chart and th
 | Parameter                                       | Description                                   | Default                                   |
 | ------------------------------------------------|-----------------------------------------------| ------------------------------------------|
 | `platform`                                      | Choose your kubernetes platform          |           default                                |
+| `useCustomRegistry`                     | Enable to use your custom Image registry          |           false                                |
+| `imageRegistry`                         | Specify your custom Image registry          |           registry.mayadata.io                                |
 | `type`                                          | Choose your installation DOP,OpenEBS or Both  |      default Both                               |
 | `server.dockerSecret`                           | Docker secret for pulling the images          |      none                                 |
 | `server.protocol`                               | http/https protocol for accessing the UI      |      http                                 |
@@ -81,7 +83,7 @@ The following table lists the configurable parameters of the Kubera chart and th
 | `alertStore.replicationFactor`                  | TBD                                           |      1                                    |
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
-# type
+# Type
    The `type` flag let you choose what you want to install with Kubera.    
      Default value is installDirector true, installOpenebs true which allows to install both components OpenEBS and Director.
      
@@ -89,6 +91,13 @@ The following table lists the configurable parameters of the Kubera chart and th
     - To install Director only `--set type.installOpenebs=false`
 
 
+
+
+# UseCustomRegistry & ImageRegistry
+   The `useCustomRegistry` and `imageRegistry` flag let you use your own image registry for Kubera images. 
+      
+    - To use custom image registry  `--set useCustomRegistry=true`
+    - To provide the name of your registry install `--set imageRegistry=registry.mayadata.io`
 # Platform
    The `Platform` flag let you choose which platfrom you want to intall.
     -  Default value is for GKE, Packet

@@ -73,7 +73,7 @@ spec:
           value: "{{ .Values.localprovisioner.basePath }}"
         - name: OPENEBS_IO_HELPER_IMAGE
           {{- if .Values.useCustomRegistry }}
-          value: "{{ template "helperImage" .}}
+          value: {{ template "helperImage" .}}
           {{ else }}
           value: "{{ .Values.helper.image }}:{{ .Values.helper.imageTag }}"
           {{- end }}
