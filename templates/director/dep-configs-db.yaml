@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: configs-db
-        image: postgres:9.6
+        image: {{ template "configs-dbImage" . }}
         imagePullPolicy: IfNotPresent
         env:
           - name: POSTGRES_DB

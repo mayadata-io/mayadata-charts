@@ -41,3 +41,81 @@ Create the name of the service account to use
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
 {{- end -}}
+{{/*
+Custom docker repositry to use in image.
+*/}}
+{{- define "ndmImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s:%s" .Values.imageRegistry "node-disk-manager-amd64" .Values.ndm.imageTag -}}
+{{- end -}}
+{{- end -}}
+{{- define "admission-webhookImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s:%s" .Values.imageRegistry "admission-server" .Values.webhook.imageTag -}}
+{{- end -}}
+{{- end -}}
+{{- define "localprovisionerImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s:%s" .Values.imageRegistry "provisioner-localpv" .Values.localprovisioner.imageTag -}}
+{{- end -}}
+{{- end -}}
+{{- define "maya-apiserverImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s:%s" .Values.imageRegistry "m-apiserver" .Values.apiserver.imageTag -}}
+{{- end -}}
+{{- end -}}
+{{- define "openebs-provisionerImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s:%s" .Values.imageRegistry "openebs-k8s-provisioner" .Values.provisioner.imageTag -}}
+{{- end -}}
+{{- end -}}
+{{- define "snapshot-operatorImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s:%s" .Values.imageRegistry "snapshot-controller" .Values.snapshotOperator.controller.imageTag -}}
+{{- end -}}
+{{- end -}}
+{{- define "snapshot-provisionerImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s:%s" .Values.imageRegistry "snapshot-provisioner" .Values.snapshotOperator.provisioner.imageTag -}}
+{{- end -}}
+{{- end -}}
+{{- define "ndm-operatorImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s:%s" .Values.imageRegistry "node-disk-operator-amd64" .Values.ndmOperator.imageTag -}}
+{{- end -}}
+{{- end -}}
+{{- define "helperImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s:%s" .Values.imageRegistry "linux-utils" .Values.helper.imageTag -}}
+{{- end -}}
+{{- end -}}
+{{- define "jivaImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s:%s" .Values.imageRegistry "jiva" .Values.jiva.imageTag -}}
+{{- end -}}
+{{- end -}}
+{{- define "cstorTargetImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s:%s" .Values.imageRegistry "cstor-istgt" .Values.cstor.target.imageTag -}}
+{{- end -}}
+{{- end -}}
+{{- define "cstorPoolImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s:%s" .Values.imageRegistry "cstor-pool" .Values.cstor.pool.imageTag -}}
+{{- end -}}
+{{- end -}}
+{{- define "cstorPoolMgmtImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s:%s" .Values.imageRegistry "cstor-pool-mgmt" .Values.cstor.poolMgmt.imageTag -}}
+{{- end -}}
+{{- end -}}
+{{- define "cstorVolumeMgmtImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s:%s" .Values.imageRegistry "cstor-volume-mgmt" .Values.cstor.volumeMgmt.imageTag -}}
+{{- end -}}
+{{- end -}}
+{{- define "monitoringImage" -}}
+{{- if .Values.useCustomRegistry -}}
+    {{- printf "%s/%s:%s" .Values.imageRegistry "m-exporter" .Values.policies.monitoring.imageTag -}}
+{{- end -}}
+{{- end -}}

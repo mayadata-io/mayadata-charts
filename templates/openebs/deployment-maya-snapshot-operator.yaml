@@ -34,7 +34,11 @@ spec:
       serviceAccountName: {{ template "openebs.serviceAccountName" . }}
       containers:
       - name: {{ template "openebs.name" . }}-snapshot-controller
+        {{- if .Values.useCustomRegistry }}
+        image: {{ template "snapshot-operatorImage" . }}
+        {{ else }}
         image: "{{ .Values.snapshotOperator.controller.image }}:{{ .Values.snapshotOperator.controller.imageTag }}"
+        {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
         # OPENEBS_IO_K8S_MASTER enables openebs snapshot controller to connect to K8s
@@ -76,7 +80,11 @@ spec:
           initialDelaySeconds: {{ .Values.snapshotOperator.healthCheck.initialDelaySeconds }}
           periodSeconds: {{ .Values.snapshotOperator.healthCheck.periodSeconds }}
       - name: {{ template "openebs.name" . }}-snapshot-provisioner
+        {{- if .Values.useCustomRegistry }}
+        image: {{ template "snapshot-operatorImage" . }}
+        {{ else }}
         image: "{{ .Values.snapshotOperator.provisioner.image }}:{{ .Values.snapshotOperator.provisioner.imageTag }}"
+        {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
         # OPENEBS_IO_K8S_MASTER enables openebs snapshot provisioner to connect to K8s

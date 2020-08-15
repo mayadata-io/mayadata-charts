@@ -18,7 +18,7 @@ spec:
         app: maya-grafana
     spec:
       containers:
-      - image: {{ .Values.imageregistry }}/graph-reporter:{{ .Values.server.release }}
+      - image: {{ .Values.imageRegistry }}/graph-reporter:{{ .Values.server.release }}
         name: grafana-reporter
         imagePullPolicy: Always
         ports:
@@ -28,7 +28,7 @@ spec:
           value: "true"
         - name: GF_AUTH_ANONYMOUS_ENABLED
           value: "false"
-        image: {{ .Values.imageregistry }}/maya-grafana:{{ .Values.server.release }}
+        image: {{ .Values.imageRegistry }}/maya-grafana:{{ .Values.server.release }}
         imagePullPolicy: Always
         name: master-grafana
         ports:

@@ -36,7 +36,11 @@ spec:
       serviceAccountName: {{ template "openebs.serviceAccountName" . }}
       containers:
       - name: {{ template "openebs.fullname" . }}-ndm-operator
+        {{- if .Values.useCustomRegistry }}
+        image: {{ template "ndm-operatorImage" . }}
+        {{ else }}
         image: "{{ .Values.ndmOperator.image }}:{{ .Values.ndmOperator.imageTag }}"
+        {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         readinessProbe:
           exec:
@@ -58,7 +62,11 @@ spec:
         - name: OPERATOR_NAME
           value: "node-disk-operator"
         - name: CLEANUP_JOB_IMAGE
+          {{- if .Values.useCustomRegistry }}
+          value: {{ template "helperImage" .}}
+          {{ else }}
           value: "{{ .Values.helper.image }}:{{ .Values.helper.imageTag }}"
+          {{- end }}
         # Process name used for matching is limited to the 15 characters
         # present in the pgrep output.
         # So fullname can be used here with pgrep (cmd is < 15 chars).

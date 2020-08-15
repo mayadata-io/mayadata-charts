@@ -50,6 +50,7 @@ data:
     maya.docs.url={{ .Values.server.docsUrl }}
     feature.mdape2e.disable=true
     feature.tour.disable=true
+    feature.crm.disable=true
     feature.mayaonpremregistration.disable=true
     feature.cortexquerier.disable=true
     feature.litmus.disable=true
@@ -81,5 +82,6 @@ data:
     api.auth.ad.group.object.class={{ .Values.server.adGroupObjectClass }}
     server.projectmember.max.limit={{ .Values.server.maxMemberCountInOneProject }}
     feature.demoproject.disable=true
+    installer.custom.imageregistry={{ template "clientImage" . }}
 ---
 {{- end }}

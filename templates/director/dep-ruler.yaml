@@ -16,7 +16,7 @@ spec:
       serviceAccountName: sa-maya-io
       initContainers:
       - name: rl-wait-for-crb
-        image: {{ .Values.imageregistry }}/maya-init:1.0.0
+        image: {{ .Values.imageRegistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -32,7 +32,7 @@ spec:
              echo $MAYA
           done
       - name: rl-wait-for-cassandra
-        image: {{ .Values.imageregistry }}/maya-init:1.0.0
+        image: {{ .Values.imageRegistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -48,7 +48,7 @@ spec:
              echo $COUNT
           done
       - name: rl-wait-for-consul
-        image: {{ .Values.imageregistry }}/maya-init:1.0.0
+        image: {{ .Values.imageRegistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -64,7 +64,7 @@ spec:
              echo $COUNT
           done
       - name: rl-wait-for-ingester
-        image: {{ .Values.imageregistry }}/maya-init:1.0.0
+        image: {{ .Values.imageRegistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -80,7 +80,7 @@ spec:
              echo $COUNT
           done
       - name: rl-wait-for-querier
-        image: {{ .Values.imageregistry }}/maya-init:1.0.0
+        image: {{ .Values.imageRegistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -96,7 +96,7 @@ spec:
              echo $COUNT
           done
       - name: rl-wait-for-alertmanager
-        image: {{ .Values.imageregistry }}/maya-init:1.0.0
+        image: {{ .Values.imageRegistry }}/maya-init:1.0.0
         command:
         - sh
         - "-c"
@@ -113,7 +113,7 @@ spec:
           done
       containers:
       - name: ruler
-        image: quay.io/cortexproject/ruler:master-590e72c6
+        image: {{ template "rulerImage" . }}
         imagePullPolicy: IfNotPresent
         args:
         - -log.level=debug

@@ -46,7 +46,11 @@ spec:
       {{- end }}
       containers:
         - name: {{ template "nginx-ingress.name" . }}-{{ .Values.defaultBackend.name }}
+          {{- if .Values.useCustomRegistry }}
+          image: {{ template "defaultBackendImage" . }}
+          {{ else }}
           image: "{{ .Values.defaultBackend.image.repository }}:{{ .Values.defaultBackend.image.tag }}"
+          {{- end }}
           imagePullPolicy: "{{ .Values.defaultBackend.image.pullPolicy }}"
           args:
           {{- range $key, $value := .Values.defaultBackend.extraArgs }}
