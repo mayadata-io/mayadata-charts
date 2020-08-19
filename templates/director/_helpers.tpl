@@ -107,7 +107,7 @@ Client Image to use
 */}}
 {{- define "clientImage" -}}
 {{- if .Values.useCustomRegistry -}}
-    {{- printf "%s" .Values.imageRegistry  -}}
+    {{- printf "%s" .Values.imageRegistry -}}
 {{- else -}}
     {{ default "" -}}
 {{- end -}}
