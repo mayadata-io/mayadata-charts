@@ -42,6 +42,7 @@ server:
   slackConfigBotClientSecret:
   slackNotificationWelcomeMessage:
   featureKialiDisable: true
+  openebsRCEnable: false
   analyticsGoogleCode:
   autoconnectLocalCluster: true
   # The host URL of the AD server
