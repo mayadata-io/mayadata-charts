@@ -50,9 +50,10 @@ spec:
           done
       containers:
       - name: configs
-        image: {{ .Values.imageRegistry }}/cortex-configs:{{ .Values.server.release }}
+        image: quay.io/cortexproject/cortex:v1.3.0
         imagePullPolicy: Always
         args:
+        - -target=configs  
         - -server.http-listen-port=80
         - -database.uri=postgres://postgres@configs-db.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}/configs?sslmode=disable
         - -database.migrations=/migrations

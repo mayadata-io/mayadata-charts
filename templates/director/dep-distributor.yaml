@@ -68,6 +68,7 @@ spec:
         image: {{ template "distributorImage" . }}
         imagePullPolicy: IfNotPresent
         args:
+        - -target=distributor
         - -log.level=debug
         - -server.http-listen-port=80
         - -consul.hostname=consul.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}:8500

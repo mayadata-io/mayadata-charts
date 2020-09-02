@@ -106,26 +106,19 @@ spec:
         image: {{ template "ingesterImage" . }}
         imagePullPolicy: IfNotPresent
         args:
+        - -target=ingester
         - -ingester.join-after=30s
-        - -ingester.claim-on-rollout=true
+        - -ingester.min-ready-duration=0s
         - -consul.hostname=consul.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}:8500
         - -dynamodb.original-table-name=cortex
-        - -chunk.storage-client=cassandra
         - -cassandra.addresses=cassandra.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}
         - -cassandra.keyspace=mayacortex
         - -cassandra.replication-factor={{ .Values.cortex.replicationFactor }}
         - -cassandra.timeout={{ .Values.cortex.timeout }}
-        - -dynamodb.periodic-table.prefix=cortex_weekly_
-        - -dynamodb.periodic-table.from=2017-01-06
-        - -dynamodb.daily-buckets-from=2017-01-10
-        - -dynamodb.base64-buckets-from=2017-01-17
-        - -dynamodb.v4-schema-from=2017-02-05
-        - -dynamodb.v5-schema-from=2017-02-22
-        - -dynamodb.v6-schema-from=2017-03-19
-        - -dynamodb.chunk-table.from=2017-04-17
-        - -memcached.hostname=memcached.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}
-        - -memcached.timeout=100ms
-        - -memcached.service=memcached
+        - -schema-config-file=/etc/cortex/schema.yaml
+        - -store.chunks-cache.memcached.hostname=memcached.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}
+        - -store.chunks-cache.memcached.timeout=100ms
+        - -store.chunks-cache.memcached.service=memcached
         ports:
         - containerPort: 80
         readinessProbe:
@@ -134,6 +127,14 @@ spec:
             port: 80
           initialDelaySeconds: 15
           timeoutSeconds: 1
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/cortex
+      volumes:
+        - name: config-volume
+          configMap:
+            name: schema-config
+  
       imagePullSecrets:
       - name: {{ .Values.server.dockerSecret }}
 {{- end -}}

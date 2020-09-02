@@ -1,0 +1,75 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: schema-config
+data:
+  schema.yaml: |
+    configs:
+      # - from: "2020-01-01"
+      #   schema: v9
+      #   index:
+      #     period: 168h
+      #     prefix: cortex_weekly_ 
+      #   store: aws-dynamo 
+      #   object_store: s3
+      - from: "2017-01-10" # Or typically a week before the Cortex cluster was created.
+        schema: v2
+        index:
+          period: 1w
+          prefix: cortex_index_
+        # Chunks section is optional and required only if you're not using a
+        # separate object store.
+        chunks:
+          period: 1w
+          prefix: cortex_chunks
+        store: aws-dynamo/bigtable-hashed/cassandra/boltdb
+        object_store: cassandra
+      - from: "2017-01-17" # Or typically a week before the Cortex cluster was created.
+        schema: v3
+        index:
+          period: 1w
+          prefix: cortex_index_
+        # Chunks section is optional and required only if you're not using a
+        # separate object store.
+        chunks:
+          period: 1w
+          prefix: cortex_chunks
+        store: aws-dynamo/bigtable-hashed/cassandra/boltdb
+        object_store: cassandra
+      - from: "2017-02-05" # Or typically a week before the Cortex cluster was created.
+        schema: v4
+        index:
+          period: 1w
+          prefix: cortex_index_
+        # Chunks section is optional and required only if you're not using a
+        # separate object store.
+        chunks:
+          period: 1w
+          prefix: cortex_chunks
+        store: aws-dynamo/bigtable-hashed/cassandra/boltdb
+        object_store: cassandra
+      - from: "2017-02-22" # Or typically a week before the Cortex cluster was created.
+        schema: v5
+        index:
+          period: 1w
+          prefix: cortex_index_
+        # Chunks section is optional and required only if you're not using a
+        # separate object store.
+        chunks:
+          period: 1w
+          prefix: cortex_chunks
+        store: aws-dynamo/bigtable-hashed/cassandra/boltdb
+        object_store: cassandra
+      - from: "2017-03-19" # Or typically a week before the Cortex cluster was created.
+        schema: v6
+        index:
+          period: 1w
+          prefix: cortex_index_
+        # Chunks section is optional and required only if you're not using a
+        # separate object store.
+        chunks:
+          period: 1w
+          prefix: cortex_chunks
+        store: aws-dynamo/bigtable-hashed/cassandra/boltdb
+        object_store: cassandra
