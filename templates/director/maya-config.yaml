@@ -83,5 +83,6 @@ data:
     server.projectmember.max.limit={{ .Values.server.maxMemberCountInOneProject }}
     feature.demoproject.disable=true
     installer.custom.imageregistry={{ template "clientImage" . }}
+    openebs.rc.enable={{ .Values.server.openebsRCEnable }}
 ---
 {{- end }}
