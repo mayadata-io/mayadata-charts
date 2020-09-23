@@ -37,6 +37,7 @@ data:
     maya.grafana.url=http://maya-grafana-service.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}:3000/
     maya.grafana.reporter.url=http://maya-grafana-service.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}:8686/
     maya.kibana.url=http://od-kibana-logging.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}:5601/
+    maya.querier.url=http://querier.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}/
     maya.elasticsearch.url=http://od-elasticsearch-logging.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}:9200/
     maya.dmaas.cloud.agent.url=http://cloud-agent-service.{{ .Release.Namespace }}.svc.{{ .Values.server.clusterDomain }}:8880
     feature.subscription.disable={{ .Values.server.featureSubscriptionDisable }}
