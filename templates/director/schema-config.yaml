@@ -23,7 +23,7 @@ data:
         chunks:
           period: 1w
           prefix: cortex_chunks
-        store: aws-dynamo/bigtable-hashed/cassandra/boltdb
+        store: cassandra
         object_store: cassandra
       - from: "2017-01-17" # Or typically a week before the Cortex cluster was created.
         schema: v3
@@ -35,7 +35,7 @@ data:
         chunks:
           period: 1w
           prefix: cortex_chunks
-        store: aws-dynamo/bigtable-hashed/cassandra/boltdb
+        store: cassandra
         object_store: cassandra
       - from: "2017-02-05" # Or typically a week before the Cortex cluster was created.
         schema: v4
@@ -47,7 +47,7 @@ data:
         chunks:
           period: 1w
           prefix: cortex_chunks
-        store: aws-dynamo/bigtable-hashed/cassandra/boltdb
+        store: cassandra
         object_store: cassandra
       - from: "2017-02-22" # Or typically a week before the Cortex cluster was created.
         schema: v5
@@ -59,7 +59,7 @@ data:
         chunks:
           period: 1w
           prefix: cortex_chunks
-        store: aws-dynamo/bigtable-hashed/cassandra/boltdb
+        store: cassandra
         object_store: cassandra
       - from: "2017-03-19" # Or typically a week before the Cortex cluster was created.
         schema: v6
@@ -71,5 +71,5 @@ data:
         chunks:
           period: 1w
           prefix: cortex_chunks
-        store: aws-dynamo/bigtable-hashed/cassandra/boltdb
+        store: cassandra
         object_store: cassandra
