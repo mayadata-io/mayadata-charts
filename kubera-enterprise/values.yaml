@@ -1,0 +1,11 @@
+platform: Default
+
+mongodb:
+    enabled: true
+    auth:
+        rootPassword: password
+
+ingress-nginx:
+    enabled: true
+    controller:
+        kind: DaemonSet
