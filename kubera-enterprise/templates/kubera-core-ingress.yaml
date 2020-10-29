@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  name: kubera-core
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: kubera-core-server
+          servicePort: 9002
+        path: /api/graphql/(.*)
+      - backend:
+          serviceName: kubera-core-server
+          servicePort: 9003
+        path: /api/auth/(.*)

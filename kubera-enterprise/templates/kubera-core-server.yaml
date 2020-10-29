@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubera-core-server
+  labels:
+    component: kubera-core-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: kubera-core-server
+  template:
+    metadata:
+      labels:
+        component: kubera-core-server
+    spec:
+      containers:
+        - name: graphql-server
+          image: gdsoumya/kubera-core-server:ci
+          envFrom:
+            - configMapRef:
+                name: kubera-core-config
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+        - name: auth-server
+          image: litmuschaos/litmusportal-auth-server:ci
+          envFrom:
+            - configMapRef:
+                name: kubera-core-config
+          env:
+            - name: ADMIN_USERNAME
+              value: "admin"
+            - name: ADMIN_PASSWORD
+              value: "kubera"
+          ports:
+            - containerPort: 3000
+          imagePullPolicy: Always
+      serviceAccountName: kubera-svc-account
