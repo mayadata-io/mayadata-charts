@@ -5,7 +5,7 @@ pipeline {
     agent {
       label {
         label ""
-          customWorkspace "/var/lib/jenkins/workspace/${REPO}"
+          customWorkspace "/var/lib/jenkins/workspace/charts/${REPO}"
       }
     }
     stages {
