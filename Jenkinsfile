@@ -24,10 +24,11 @@ pipeline {
                                sh """
                                    helm package ./kubera-charts
 				   helm package ./kubera-enterprise
+				   cd  ${REPO}
                                    git clone https://${user}:${pass}@github.com/mayadata-io/${REPO}.git
                                    cd  ${REPO}
                                    git checkout gh-pages
-                                   mv ../*.tgz .
+                                   mv ../../*.tgz .
                                    helm repo index .  --url https://charts.mayadata.io 
                                    git add .
                                    git commit -m "release new charts"
