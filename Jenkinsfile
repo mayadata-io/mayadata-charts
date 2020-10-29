@@ -19,10 +19,11 @@ pipeline {
         stage('publish charts ') {
             steps {
                 script {
-                    if (env.BRANCH_NAME == 'master')  {
+                    if (env.BRANCH_NAME == 'master' || env.BRANCH_NAME == '3.0' )  {
 		             withCredentials([usernamePassword( credentialsId: 'dd46bd83-0e93-492b-bc43-fcb671b135c3', usernameVariable: 'user', passwordVariable: 'pass')]) {
                                sh """
-                                   helm package ./
+                                   helm package ./kubera-charts
+				   helm package ./kubera-enterprise
                                    git clone https://${user}:${pass}@github.com/mayadata-io/${REPO}.git
                                    cd  ${REPO}
                                    git checkout gh-pages
