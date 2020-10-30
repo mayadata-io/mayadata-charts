@@ -20,6 +20,11 @@ spec:
           envFrom:
             - configMapRef:
                 name: kubera-core-config
+          env:
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
