@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubera-core-ui
+  labels:
+    component: kubera-core-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: kubera-core-ui
+  template:
+    metadata:
+      labels:
+        component: kubera-core-ui
+    spec:
+      containers:
+        - name: kubera-core-ui
+          image: mayadataio/kubera-core-ui:ci
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80

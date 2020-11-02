@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: graphql-server
-          image: gdsoumya/kubera-core-server:ci
+          image: mayadataio/kubera-core-server:ci
           envFrom:
             - configMapRef:
                 name: kubera-core-config

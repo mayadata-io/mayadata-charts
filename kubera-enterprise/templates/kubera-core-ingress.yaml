@@ -17,3 +17,7 @@ spec:
           serviceName: kubera-core-server
           servicePort: 9003
         path: /api/auth/(.*)
+      - backend:
+          serviceName: kubera-core-ui
+          servicePort: 9091
+        path: /(.*)
