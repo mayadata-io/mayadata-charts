@@ -29,7 +29,7 @@ spec:
             - containerPort: 8080
           imagePullPolicy: Always
         - name: auth-server
-          image: litmuschaos/litmusportal-auth-server:ci
+          image: mayadataio/kubera-auth:ci
           envFrom:
             - configMapRef:
                 name: kubera-core-config
