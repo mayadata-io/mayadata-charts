@@ -3,9 +3,11 @@ kind: ConfigMap
 metadata:
   name: kubera-core-config
 data:
+  CONFIGMAP_NAME: kubera-core-config
   JWT_SECRET: cluster
   DB_SERVER: "mongodb://{{ .Release.Name }}-mongodb:27017"
   FRONTEND_URL: "http://google.com"
   AUTH_URL: "http://localhost:3000/login"
   DB_USER: "root"
   DB_PASSWORD: "password"
+  PORTAl_URL: "http://kubera-core-ui:9091"
