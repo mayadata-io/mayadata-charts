@@ -10,4 +10,4 @@ data:
   AUTH_URL: "http://localhost:3000/login"
   DB_USER: "root"
   DB_PASSWORD: "password"
-  PORTAl_URL: "http://kubera-core-ui:9091"
+  PORTAL_URL: "http://kubera-core-ui:9091"
