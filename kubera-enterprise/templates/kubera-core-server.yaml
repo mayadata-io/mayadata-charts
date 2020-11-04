@@ -38,6 +38,10 @@ spec:
               value: "admin"
             - name: ADMIN_PASSWORD
               value: "kubera"
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
           ports:
             - containerPort: 3000
           imagePullPolicy: Always
