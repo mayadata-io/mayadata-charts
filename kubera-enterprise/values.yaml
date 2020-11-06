@@ -1,11 +1,29 @@
 platform: Default
 
+
+imagePullSecrets:
+    - name: kubera-img-pull-secret
+
+image:
+    repository: docker.io/mayadataio
+    tag: ci
+
 mongodb:
-    enabled: true
     auth:
         rootPassword: password
+    global:
+        imagePullSecrets: []
+        storageClass: local-path
+    image:
+        registry: docker.io
+        repository: bitnami/mongodb
+        tag: 4.4.1-debian-10-r13
 
 ingress-nginx:
-    enabled: true
+    imagePullSecrets: []
     controller:
         kind: DaemonSet
+        image:
+            repository: k8s.gcr.io/ingress-nginx/controller
+            tag: v0.40.2
+

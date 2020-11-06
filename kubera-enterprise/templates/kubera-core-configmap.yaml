@@ -10,3 +10,6 @@ data:
   DB_USER: "root"
   DB_PASSWORD: "password"
   PORTAL_URL: "http://kubera-core-ui:9091"
+  LITMUS_SA: kubera-litmus-svc-account
+  PROPEL_SA: kubera-propel-svc-account
+  IMG_PULL_SECRET: kubera-img-pull-secret
