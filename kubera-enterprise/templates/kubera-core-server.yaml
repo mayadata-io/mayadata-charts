@@ -14,6 +14,9 @@ spec:
       labels:
         component: kubera-core-server
     spec:
+    {{- if .Values.imagePullSecrets }}
+      imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 8 }}
+    {{- end }}
       containers:
         - name: graphql-server
           image: mayadataio/kubera-core-server:ci
@@ -29,7 +32,7 @@ spec:
             - containerPort: 8080
           imagePullPolicy: Always
         - name: auth-server
-          image: mayadataio/kubera-auth:ci
+          image: {{ .Values.image.repository }}/kubera-auth:{{ .Values.image.tag }}
           envFrom:
             - configMapRef:
                 name: kubera-core-config
@@ -45,4 +48,4 @@ spec:
           ports:
             - containerPort: 3000
           imagePullPolicy: Always
-      serviceAccountName: kubera-svc-account
+      serviceAccountName: kubera-core-svc-account
