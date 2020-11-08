@@ -14,12 +14,15 @@ spec:
       labels:
         component: kubera-core-server
     spec:
-    {{- if .Values.imagePullSecrets }}
-      imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 8 }}
-    {{- end }}
+      imagePullSecrets:
+        {{- if .Values.imagePullSecret }}
+        - name: {{ .Values.imagePullSecret }}
+        {{- else }}
+        - name: kubera-img-pull-secret
+        {{- end }}
       containers:
         - name: graphql-server
-          image: mayadataio/kubera-core-server:ci
+          image: {{ .Values.image.repository }}/kubera-core-server:{{ .Values.image.tag }}
           envFrom:
             - configMapRef:
                 name: kubera-core-config
