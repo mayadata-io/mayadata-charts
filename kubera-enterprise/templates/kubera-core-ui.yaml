@@ -14,9 +14,12 @@ spec:
       labels:
         component: kubera-core-ui
     spec:
-    {{- if .Values.imagePullSecrets }}
-      imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 8 }}
-    {{- end }}
+      imagePullSecrets:
+        {{- if .Values.imagePullSecret }}
+        - name: {{ .Values.imagePullSecret }}
+        {{- else }}
+        - name: kubera-img-pull-secret
+        {{- end }}
       containers:
         - name: kubera-core-ui
           image: {{ .Values.image.repository }}/kubera-core-ui:{{ .Values.image.tag }}

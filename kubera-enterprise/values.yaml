@@ -1,8 +1,7 @@
 platform: Default
 
 
-imagePullSecrets:
-    - name: kubera-img-pull-secret
+imagePullSecret: ""
 
 image:
     repository: docker.io/mayadataio
@@ -13,7 +12,7 @@ mongodb:
         rootPassword: password
     global:
         imagePullSecrets: []
-        storageClass: local-path
+        storageClass: ""
     image:
         registry: docker.io
         repository: bitnami/mongodb

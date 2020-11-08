@@ -4,12 +4,16 @@ metadata:
   name: kubera-core-config
 data:
   CONFIGMAP_NAME: kubera-core-config
-  DB_SERVER: "mongodb://{{ .Release.Name }}-mongodb:27017"
-  FRONTEND_URL: "http://kubera-core-ui:9091"
-  AUTH_URL: "http://localhost:3000/login"
-  DB_USER: "root"
-  DB_PASSWORD: "password"
-  PORTAL_URL: "http://kubera-core-ui:9091"
+  DB_SERVER: mongodb://{{ .Release.Name }}-mongodb:27017
+  FRONTEND_URL: http://kubera-core-ui:9091
+  AUTH_URL: http://localhost:3000/login
+  DB_USER: root
+  DB_PASSWORD: password
+  PORTAL_URL: http://kubera-core-ui:9091
   LITMUS_SA: kubera-litmus-svc-account
   PROPEL_SA: kubera-propel-svc-account
+  {{- if .Values.imagePullSecret }}
+  IMG_PULL_SECRET: {{ .Values.imagePullSecret }}
+  {{- else }}
   IMG_PULL_SECRET: kubera-img-pull-secret
+  {{- end }}
