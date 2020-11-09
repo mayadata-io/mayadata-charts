@@ -22,7 +22,7 @@ spec:
         {{- end }}
       containers:
         - name: kubera-core-ui
-          image: {{ .Values.image.repository }}/kubera-core-ui:{{ .Values.image.tag }}
+          image: {{ .Values.image.registry }}/{{ .Values.image.organization }}/kubera-core-ui:{{ .Values.image.tag }}
           imagePullPolicy: Always
           ports:
             - containerPort: 80

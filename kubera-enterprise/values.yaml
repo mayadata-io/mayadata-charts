@@ -4,7 +4,8 @@ platform: Default
 imagePullSecret: ""
 
 image:
-    repository: docker.io/mayadataio
+    registry: docker.io
+    organization: mayadataio
     tag: ci
 
 mongodb:
