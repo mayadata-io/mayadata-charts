@@ -22,7 +22,7 @@ spec:
         {{- end }}
       containers:
         - name: graphql-server
-          image: {{ .Values.image.repository }}/kubera-core-server:{{ .Values.image.tag }}
+          image: {{ .Values.image.registry }}/{{ .Values.image.organization }}/kubera-core-server:{{ .Values.image.tag }}
           envFrom:
             - configMapRef:
                 name: kubera-core-config
@@ -35,7 +35,7 @@ spec:
             - containerPort: 8080
           imagePullPolicy: Always
         - name: auth-server
-          image: {{ .Values.image.repository }}/kubera-auth:{{ .Values.image.tag }}
+          image: {{ .Values.image.registry }}/{{ .Values.image.organization }}/kubera-auth:{{ .Values.image.tag }}
           envFrom:
             - configMapRef:
                 name: kubera-core-config

@@ -12,6 +12,9 @@ data:
   PORTAL_URL: http://kubera-core-ui:9091
   LITMUS_SA: kubera-litmus-svc-account
   PROPEL_SA: kubera-propel-svc-account
+  IMAGE_REG: {{ .Values.image.registry }}
+  IMAGE_ORG: {{ .Values.image.organization }}
+  IMAGE_TAG: {{ .Values.image.tag }}
   {{- if .Values.imagePullSecret }}
   IMG_PULL_SECRET: {{ .Values.imagePullSecret }}
   {{- else }}
