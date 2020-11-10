@@ -39,6 +39,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: kubera-core-config
+            - secretRef:
+                name: kubera-oauth-credentials
           env:
             - name: ADMIN_USERNAME
               value: "admin"

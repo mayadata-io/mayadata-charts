@@ -4,6 +4,7 @@ metadata:
   name: kubera-core-config
 data:
   CONFIGMAP_NAME: kubera-core-config
+  SECRET_NAME: kubera-oauth-credentials
   DB_SERVER: mongodb://{{ .Release.Name }}-mongodb:27017
   FRONTEND_URL: http://kubera-core-ui:9091
   AUTH_URL: http://localhost:3000/login
