@@ -3,7 +3,7 @@ entries:
   kubera-charts:
   - apiVersion: v1
     appVersion: 2.1.0
-    created: "2020-11-09T08:04:38.38920885Z"
+    created: "2020-11-10T17:40:50.220043428Z"
     description: Kubera is a complete solution for the use of Kubernetes as a data
       layer. It includes Director and OpenEBS
     digest: 87ed1553b68676a8067c691316a22a0e4dc105ba6fac9975956badeead5cda27
@@ -26,7 +26,7 @@ entries:
     version: 2.1.0
   - apiVersion: v1
     appVersion: 2.0.0
-    created: "2020-11-09T08:04:38.384072531Z"
+    created: "2020-11-10T17:40:50.215035846Z"
     description: Kubera is a complete solution for the use of Kubernetes as a data
       layer. It includes Director and OpenEBS
     digest: a05817708388e2cea4d5f0a58ee3537733eb55cf2f4abf1c05aa0fe42e95f47e
@@ -49,7 +49,7 @@ entries:
     version: 2.0.0
   - apiVersion: v1
     appVersion: 1.12.0
-    created: "2020-11-09T08:04:38.378357075Z"
+    created: "2020-11-10T17:40:50.209224778Z"
     description: Kubera is a complete solution for the use of Kubernetes as a data
       layer. It includes Director and OpenEBS
     digest: c7eda020174b043569906d573712589ca8efd0546de60fd461addcc20834bdc2
@@ -72,7 +72,7 @@ entries:
     version: 1.12.0
   - apiVersion: v1
     appVersion: 1.11.0
-    created: "2020-11-09T08:04:38.373668521Z"
+    created: "2020-11-10T17:40:50.204580054Z"
     description: Kubera is a complete solution for the use of Kubernetes as a data
       layer. It includes Director and OpenEBS
     digest: 621cc3da45e86e0fb6ae5dab54667732a602970cbae4e8edca4b4d878f9471a5
@@ -95,7 +95,7 @@ entries:
     version: 1.11.0
   - apiVersion: v1
     appVersion: 1.10.0
-    created: "2020-11-09T08:04:38.367867763Z"
+    created: "2020-11-10T17:40:50.198755703Z"
     description: Kubera is a complete solution for the use of Kubernetes as a data
       layer. It includes Director and OpenEBS
     digest: b92df90c947a56d00f941b16e82264a2e457c6a72fbf7569c2307e4c038162b4
@@ -119,10 +119,10 @@ entries:
   kubera-enterprise:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2020-11-09T08:04:38.396345468Z"
+    created: "2020-11-10T17:40:50.22715662Z"
     description: Kubera Enterprise is a complete solution for the use of Kubernetes
       as a data layer.
-    digest: 9d7075781f1d6f701fc228883d677c40c2fa956803cd36b131165e443002af46
+    digest: 841cf6a308dc25142d0ee210fa59236f7e0ad185bb96c658f18e5888503caa9d
     home: https://www.mayadata.io/
     icon: https://raw.githubusercontent.com/mayadata-io/kubera-charts/master/mayadata-icon.png
     keywords:
@@ -137,4 +137,4 @@ entries:
     urls:
     - https://charts.mayadata.io/kubera-enterprise-0.0.1.tgz
     version: 0.0.1
-generated: "2020-11-09T08:04:38.362535718Z"
+generated: "2020-11-10T17:40:50.193064434Z"
