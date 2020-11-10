@@ -1,10 +1,10 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: kubera-propel-rb
+  name: {{ .Release.Namespace }}-kubera-propel-rb
 subjects:
   - kind: ServiceAccount
-    name: kubera-propel-svc-account
+    name: {{ .Release.Namespace }}-kubera-propel-svc-account
     namespace: {{ .Release.Namespace }}
 roleRef:
   kind: ClusterRole

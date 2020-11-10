@@ -51,4 +51,4 @@ spec:
           ports:
             - containerPort: 3000
           imagePullPolicy: Always
-      serviceAccountName: kubera-core-svc-account
+      serviceAccountName: {{ .Release.Namespace }}-kubera-core-svc-account

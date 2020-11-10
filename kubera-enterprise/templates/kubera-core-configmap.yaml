@@ -10,11 +10,12 @@ data:
   DB_USER: root
   DB_PASSWORD: password
   PORTAL_URL: http://kubera-core-ui:9091
-  LITMUS_SA: kubera-litmus-svc-account
-  PROPEL_SA: kubera-propel-svc-account
+  LITMUS_SA: {{ .Release.Namespace }}-kubera-litmus-svc-account
+  PROPEL_SA: {{ .Release.Namespace }}-kubera-propel-svc-account
   IMAGE_REG: {{ .Values.image.registry }}
   IMAGE_ORG: {{ .Values.image.organization }}
   IMAGE_TAG: {{ .Values.image.tag }}
+  RELEASE_NAME: {{ .Release.Name }}
   {{- if .Values.imagePullSecret }}
   IMG_PULL_SECRET: {{ .Values.imagePullSecret }}
   {{- else }}
