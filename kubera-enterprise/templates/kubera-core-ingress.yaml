@@ -21,3 +21,4 @@ spec:
           serviceName: kubera-core-ui
           servicePort: 9091
         path: /(.*)
+    host: {{ .Values.domain }}

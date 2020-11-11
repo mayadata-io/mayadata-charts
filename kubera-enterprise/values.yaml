@@ -2,7 +2,7 @@ platform: Default
 
 
 imagePullSecret: ""
-
+domain: ""
 image:
     registry: docker.io
     organization: mayadataio
