@@ -17,6 +17,11 @@ data:
   IMAGE_ORG: {{ .Values.image.organization }}
   IMAGE_TAG: {{ .Values.image.tag }}
   RELEASE_NAME: {{ .Release.Name }}
+  {{- if .Values.domain }}
+  DOMAIN_NAME: {{ .Values.domain }}
+  {{- else }}
+  DOMAIN_NAME: ""
+  {{- end }}
   {{- if .Values.imagePullSecret }}
   IMG_PULL_SECRET: {{ .Values.imagePullSecret }}
   {{- else }}
