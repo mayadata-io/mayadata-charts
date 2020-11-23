@@ -3,6 +3,10 @@ platform: Default
 
 imagePullSecret: ""
 domain: ""
+basepath: ""
+chaospath: "chaos"
+propelpath: "propel"
+scheme: "http"
 image:
     registry: docker.io
     organization: mayadataio
@@ -26,4 +30,9 @@ ingress-nginx:
         image:
             repository: k8s.gcr.io/ingress-nginx/controller
             tag: v0.40.2
-
+        service:
+            type: LoadBalancer
+            #type: NodePort
+            #nodePorts:
+                #http: 30080
+                #https: 30443
