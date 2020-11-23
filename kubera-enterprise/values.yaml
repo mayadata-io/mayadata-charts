@@ -3,6 +3,10 @@ platform: Default
 
 imagePullSecret: ""
 domain: ""
+basepath: ""
+chaospath: "chaos"
+propelpath: "propel"
+scheme: "http"
 image:
     registry: docker.io
     organization: mayadataio
