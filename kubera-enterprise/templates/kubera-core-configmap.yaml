@@ -22,9 +22,15 @@ data:
   {{- else }}
   DOMAIN_NAME: ""
   {{- end }}
+  {{- if .Values.basepath }}
   BASE_PATH: {{ .Values.basepath }}
+  {{- end }}
+  {{- if .Values.chaospath }}
   CHAOS_PATH: {{ .Values.chaospath }}
+  {{- end }}
+  {{- if .Values.propelpath }}
   PROPEL_PATH: {{ .Values.propelpath }}
+  {{- end }}
   SCHEME: {{ .Values.scheme }}
   {{- if .Values.imagePullSecret }}
   IMG_PULL_SECRET: {{ .Values.imagePullSecret }}
