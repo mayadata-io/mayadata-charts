@@ -1,7 +1,7 @@
 platform: Default
 
 
-imagePullSecret: ""
+imagePullSecret: "kubera-img-pull-secret"
 domain: ""
 basepath: ""
 chaospath: "chaos"
@@ -31,8 +31,8 @@ ingress-nginx:
             repository: k8s.gcr.io/ingress-nginx/controller
             tag: v0.40.2
         service:
-            type: LoadBalancer
-            #type: NodePort
-            #nodePorts:
-                #http: 30080
-                #https: 30443
+            #type: LoadBalancer
+            type: NodePort
+            nodePorts:
+                http: 30080
+                https: 30443
