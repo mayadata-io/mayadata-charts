@@ -26,7 +26,7 @@ mongodb:
 ingress-nginx:
     imagePullSecrets: []
     controller:
-        kind: DaemonSet
+        kind: Deployment
         image:
             repository: k8s.gcr.io/ingress-nginx/controller
             tag: v0.40.2
