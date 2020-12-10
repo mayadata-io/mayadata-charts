@@ -5,11 +5,23 @@ metadata:
 data:
   CONFIGMAP_NAME: kubera-core-config
   SECRET_NAME: kubera-oauth-credentials
+  {{- if .Values.db.server }}
+  DB_SERVER: {{ .Values.db.server }}
+  {{- else }}
   DB_SERVER: mongodb://{{ .Release.Name }}-mongodb:27017
+  {{- end }}
   FRONTEND_URL: http://kubera-core-ui:9091
   AUTH_URL: http://localhost:3000/login
+  {{- if .Values.db.user }}
+  DB_USER: {{ .Values.db.user }}
+  {{- else }}
   DB_USER: root
+  {{- end }}
+  {{- if .Values.db.pass }}
+  DB_PASSWORD: {{ .Values.db.pass }}
+  {{- else }}
   DB_PASSWORD: password
+  {{- end }}
   PORTAL_URL: http://kubera-core-ui:9091
   LITMUS_SA: {{ .Release.Namespace }}-kubera-litmus-svc-account
   PROPEL_SA: {{ .Release.Namespace }}-kubera-propel-svc-account
