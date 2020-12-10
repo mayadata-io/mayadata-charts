@@ -1,0 +1,9 @@
+dependencies:
+- name: mongodb
+  version: 9.2.4
+  repository: https://charts.bitnami.com/bitnami
+  condition: mongodb.enablemodule
+- name: ingress-nginx
+  version: 3.7.1
+  repository: https://kubernetes.github.io/ingress-nginx
+  condition: ingress-nginx.enablemodule
