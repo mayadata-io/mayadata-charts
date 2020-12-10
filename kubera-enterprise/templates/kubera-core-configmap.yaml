@@ -32,8 +32,4 @@ data:
   PROPEL_PATH: {{ .Values.propelpath }}
   {{- end }}
   SCHEME: {{ .Values.scheme }}
-  {{- if .Values.imagePullSecret }}
   IMG_PULL_SECRET: {{ .Values.imagePullSecret }}
-  {{- else }}
-  IMG_PULL_SECRET: kubera-img-pull-secret
-  {{- end }}
