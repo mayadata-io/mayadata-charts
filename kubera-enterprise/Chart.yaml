@@ -1,0 +1,15 @@
+apiVersion: v1
+version: 0.0.1
+name: kubera-enterprise
+appVersion: 0.0.1
+description: Kubera Enterprise is a complete solution for the use of Kubernetes as a data layer.
+icon: https://raw.githubusercontent.com/mayadata-io/kubera-charts/master/mayadata-icon.png
+home: https://www.mayadata.io/
+keywords:
+  - cloud-native-storage
+  - storage
+sources:
+  - https://github.com/mayadata-io/kubera-charts.git
+maintainers:
+  - name: MayaData
+    email: support@mayadata.io

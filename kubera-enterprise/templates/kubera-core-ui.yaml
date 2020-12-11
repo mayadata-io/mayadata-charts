@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubera-core-ui
+  labels:
+    component: kubera-core-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: kubera-core-ui
+  template:
+    metadata:
+      labels:
+        component: kubera-core-ui
+    spec:
+      imagePullSecrets:
+        {{- if .Values.imagePullSecret }}
+        - name: {{ .Values.imagePullSecret }}
+        {{- else }}
+        - name: kubera-img-pull-secret
+        {{- end }}
+      containers:
+        - name: kubera-core-ui
+          image: {{ .Values.image.registry }}/{{ .Values.image.organization }}/kubera-core-ui:{{ .Values.image.tag }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80

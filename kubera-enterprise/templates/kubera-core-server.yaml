@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubera-core-server
+  labels:
+    component: kubera-core-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: kubera-core-server
+  template:
+    metadata:
+      labels:
+        component: kubera-core-server
+    spec:
+      imagePullSecrets:
+        {{- if .Values.imagePullSecret }}
+        - name: {{ .Values.imagePullSecret }}
+        {{- else }}
+        - name: kubera-img-pull-secret
+        {{- end }}
+      containers:
+        - name: graphql-server
+          image: {{ .Values.image.registry }}/{{ .Values.image.organization }}/kubera-core-server:{{ .Values.image.tag }}
+          envFrom:
+            - configMapRef:
+                name: kubera-core-config
+          env:
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+        - name: auth-server
+          image: {{ .Values.image.registry }}/{{ .Values.image.organization }}/kubera-auth:{{ .Values.image.tag }}
+          envFrom:
+            - configMapRef:
+                name: kubera-core-config
+            - secretRef:
+                name: kubera-oauth-credentials
+          env:
+            - name: ADMIN_USERNAME
+              value: "admin"
+            - name: ADMIN_PASSWORD
+              value: "kubera"
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          ports:
+            - containerPort: 3000
+          imagePullPolicy: Always
+      serviceAccountName: {{ .Release.Namespace }}-kubera-core-svc-account

@@ -1,0 +1,44 @@
+platform: Default
+
+
+imagePullSecret: "kubera-img-pull-secret"
+domain: ""
+basepath: ""
+chaospath: "chaos"
+propelpath: "propel"
+scheme: "http"
+image:
+    registry: docker.io
+    organization: mayadataio
+    tag: ci
+db:
+    server: ""
+    user: ""
+    pass: ""
+
+mongodb:
+    enablemodule: true
+    auth:
+        rootPassword: password
+    global:
+        imagePullSecrets: []
+        storageClass: ""
+    image:
+        registry: docker.io
+        repository: bitnami/mongodb
+        tag: 4.4.1-debian-10-r13
+
+ingress-nginx:
+    enablemodule: true
+    imagePullSecrets: []
+    controller:
+        kind: Deployment
+        image:
+            repository: k8s.gcr.io/ingress-nginx/controller
+            tag: v0.40.2
+        service:
+            #type: LoadBalancer
+            type: NodePort
+            nodePorts:
+                http: 30080
+                https: 30443
