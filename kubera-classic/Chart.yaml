@@ -1,8 +1,8 @@
 apiVersion: v1
 version: 2.1.0
-name: kubera-charts
+name: kubera-classic
 appVersion: 2.1.0
-description: Kubera is a complete solution for the use of Kubernetes as a data layer. It includes Director and OpenEBS 
+description: Kubera classic is a complete solution for the use of Kubernetes as a data layer. It includes Director and OpenEBS
 icon: https://raw.githubusercontent.com/mayadata-io/kubera-charts/master/mayadata-icon.png
 home: https://www.mayadata.io/
 keywords:
