@@ -25,4 +25,4 @@ spec:
           image: {{ .Values.image.registry }}/{{ .Values.image.organization }}/kubera-core-ui:{{ .Values.image.tag }}
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
+            - containerPort: 8080
