@@ -14,6 +14,7 @@ This chart bootstraps Kubera Enterprise on a [Kubernetes](http://kubernetes.io) 
 ## Installing Kubera Enterprise
 ```
 helm repo add kubera https://charts.mayadata.io/
+
 helm install --namespace <yournamespace> kubera kubera/kubera-enterprise -f values.yaml
 ```
 
