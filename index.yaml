@@ -116,4 +116,58 @@ entries:
     urls:
     - https://charts.mayadata.io/kubera-charts-1.10.0.tgz
     version: 1.10.0
-generated: "2020-12-15T18:47:24.089302443+05:30"
+  kubera-classic:
+  - apiVersion: v1
+    appVersion: 2.1.0
+    created: "2020-12-15T14:27:18.586115671Z"
+    description: Kubera classic is a complete solution for the use of Kubernetes as
+      a data layer. It includes Director and OpenEBS
+    digest: c669e14a919015043e67ef188f02770f23ba65ba5fe4f5864ce956ed4ba00ca3
+    home: https://www.mayadata.io/
+    icon: https://raw.githubusercontent.com/mayadata-io/kubera-charts/master/mayadata-icon.png
+    keywords:
+    - monitoring
+    - visualization
+    - efk
+    - cloud-native-storage
+    - storage
+    maintainers:
+    - email: support@mayadata.io
+      name: MayaData
+    name: kubera-classic
+    sources:
+    - https://github.com/mayadata-io/kubera-charts.git
+    urls:
+    - http://asset.mayadata.io/charts/kubera-classic-2.1.0.tgz
+    version: 2.1.0
+  kubera-enterprise:
+  - apiVersion: v1
+    appVersion: 0.0.1
+    created: "2020-12-15T14:27:18.593990647Z"
+    dependencies:
+    - condition: mongodb.enablemodule
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.2.4
+    - condition: ingress-nginx.enablemodule
+      name: ingress-nginx
+      repository: https://kubernetes.github.io/ingress-nginx
+      version: 3.7.1
+    description: Kubera Enterprise is a complete solution for the use of Kubernetes
+      as a data layer.
+    digest: e21e8294f80bee51f5c386b3a8fbe3117eee2b13bb22e7419efa83dec10dc947
+    home: https://www.mayadata.io/
+    icon: https://raw.githubusercontent.com/mayadata-io/kubera-charts/master/mayadata-icon.png
+    keywords:
+    - cloud-native-storage
+    - storage
+    maintainers:
+    - email: support@mayadata.io
+      name: MayaData
+    name: kubera-enterprise
+    sources:
+    - https://github.com/mayadata-io/kubera-charts.git
+    urls:
+    - http://asset.mayadata.io/charts/kubera-enterprise-0.0.1.tgz
+    version: 0.0.1
+generated: "2020-12-15T14:27:18.580262583Z"
