@@ -22,7 +22,7 @@ pipeline {
                     if (env.BRANCH_NAME == 'master' || env.BRANCH_NAME == '3.0' )  {
 		             withCredentials([usernamePassword( credentialsId: 'dd46bd83-0e93-492b-bc43-fcb671b135c3', usernameVariable: 'user', passwordVariable: 'pass')]) {
                                sh """
-                                   helm package ./kubera-charts
+                                   helm package ./kubera-classic
 				   helm package ./kubera-enterprise
 				   cd  ${REPO}
                                    git clone https://${user}:${pass}@github.com/mayadata-io/${REPO}.git
