@@ -6,6 +6,7 @@ Introduction
 ------------
 
 This chart bootstraps Kubera Enterprise on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+###### NOTE: Please refer [here](https://github.com/mayadata-io/kubera-charts/blob/master/kubera-classic/README.md) to install Kubera Classic.
 
 ## Prerequisites
 - Kubernetes 1.12.0+ with RBAC enabled.
