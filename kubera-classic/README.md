@@ -1,6 +1,5 @@
-Kubera
+Kubera Classic
 =====================
-
 
 Introduction
 ------------
