@@ -36,6 +36,9 @@ ingress-nginx:
         image:
             repository: k8s.gcr.io/ingress-nginx/controller
             tag: v0.40.2
+            # if we are using a custom image we need to update image digest
+            # docker inspect --format='{{range $sha := .RepoDigests}}{{$sha}}{{"\n"}}{{end}}' $img_name
+            # digest: sha256:0100c173327bbb124c76ea1511dade4cec718234c23f8e7a41f27ad03f361431
         service:
             #type: LoadBalancer
             type: NodePort
