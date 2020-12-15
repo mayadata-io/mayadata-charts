@@ -31,7 +31,7 @@ pipeline {
                                    mv ../*.tgz ./tmp
                                    helm repo index --url http://asset.mayadata.io/charts/ --merge ./index.yaml tmp
                                    mv tmp/index.yaml .
-                                   aws s3 cp ./tmp/*  s3://asset.mayadata.io/charts/ --acl public-read
+                                   aws s3 cp ./tmp/  s3://asset.mayadata.io/charts/ --recursive --acl public-read
                                    rm -rf tmp
                                    git add .
                                    git commit -m "release new charts"
