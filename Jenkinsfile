@@ -12,7 +12,7 @@ pipeline {
         stage('test') {
             steps {
                 script {
-                    sh "pwd && helm lint kubera-charts/ && helm lint kubera-enterprise/"
+                    sh "pwd && helm lint kubera-classic/ && helm lint kubera-enterprise/"
                 }
             }
         }
