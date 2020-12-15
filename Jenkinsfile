@@ -23,17 +23,15 @@ pipeline {
 		             withCredentials([usernamePassword( credentialsId: 'dd46bd83-0e93-492b-bc43-fcb671b135c3', usernameVariable: 'user', passwordVariable: 'pass')]) {
                                sh """
                                    helm package ./kubera-classic
-				   helm package ./kubera-enterprise
-				   cd  ${REPO}
+                                   helm package ./kubera-enterprise
                                    git clone https://${user}:${pass}@github.com/mayadata-io/${REPO}.git
                                    cd  ${REPO}
                                    git checkout gh-pages
-                                   mv ../../*.tgz .
-                                   helm repo index .  --url https://charts.mayadata.io 
+                                   mv ../*.tgz .
+                                   helm repo index .  --url https://charts.mayadata.io
                                    git add .
                                    git commit -m "release new charts"
                                    git push https://${user}:${pass}@github.com/mayadata-io/${REPO}.git --all
-                                
                                   """
                            }
                         }
