@@ -27,8 +27,12 @@ pipeline {
                                    git clone https://${user}:${pass}@github.com/mayadata-io/${REPO}.git
                                    cd  ${REPO}
                                    git checkout gh-pages
-                                   mv ../*.tgz .
-                                   helm repo index .  --url https://charts.mayadata.io
+                                   mkdir tmp
+                                   mv ../*.tgz ./tmp
+                                   helm repo index --url http://asset.mayadata.io/charts/ --merge ./index.yaml tmp
+                                   mv tmp/index.yaml .
+                                   aws s3 cp ./tmp/*  s3://asset.mayadata.io/charts/ --acl public-read
+                                   rm -rf tmp
                                    git add .
                                    git commit -m "release new charts"
                                    git push https://${user}:${pass}@github.com/mayadata-io/${REPO}.git --all
