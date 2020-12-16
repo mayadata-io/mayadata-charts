@@ -22,6 +22,7 @@ helm install --namespace <yournamespace> kubera kubera/kubera-enterprise -f valu
 
 The following table lists the configurable parameters of the Kubera enterprise and their default values.
 
+
 | Parameter                                       | Description                                   | Default                                   |
 | ------------------------------------------------|-----------------------------------------------| ------------------------------------------|
 | `platform`                                      | Choose your kubernetes platform               |           `default`                       |
