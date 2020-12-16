@@ -24,14 +24,23 @@ The following table lists the configurable parameters of the Kubera enterprise a
 
 
 | Parameter                                       | Description                                   | Default                                   |
+
 |-------------------------------------------------|-----------------------------------------------|-------------------------------------------|
+
 | `platform`                                      | Choose your kubernetes platform               |           `default`                       |
+
 | `imagePullSecret`                               | Image pull secret for kubera enterprise images|           `kubera-img-pull-secret`        |
+
 | `domain`                                        | Domain name for kubera enterprise             |           `""`                            |
+
 | `scheme`                                        | Scheme for kubera enterprise http/https       |           `http`                          |
+
 | `image.registry`                                | Image registry name kubera enterprise         |           `docker.io`                     |
+
 | `image.organization`                            | Image registry organization name              |           `mayadataio`                    |
+
 | `image.tag`                                     | Image tag for kubera enterprise images        |           `ci`                            |
+
 |                                                 |                                               |                                           |
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
