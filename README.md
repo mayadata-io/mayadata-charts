@@ -44,6 +44,7 @@ The following table lists the configurable parameters of the Kubera enterprise a
 | `mongodb.image.tag`                               | MongoDB image tag                                                                                          | `4.4.1-debian-10-r13`                                                 |
 | `mongodb.global.imagePullSecrets`                       | Specify docker-registry secret names as an array                                                           | `[]`      |
 | `mongodb.global.storageClass`                       | storageClass for mongodb                                                           | `""`      |
+
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Ingress Nginx Configuration
@@ -57,6 +58,7 @@ The following table lists the configurable parameters of the Kubera enterprise a
 | `ingress-nginx.controller.service.kind`                               | Ingress Nginx controller service kind LoadBalancer / NodePort                                                                                         | `NodePort`                                                 |
 | `ingress-nginx.controller.service.nodePorts.http`                               | Ingress Nginx controller service http port                                                                                         | `30080`                                                 |
 | `ingress-nginx.controller.service.nodePorts.https`                               | Ingress Nginx controller service https port                                                                                        | `30443`                                                 |
+
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`.
