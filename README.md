@@ -24,7 +24,8 @@ The following table lists the configurable parameters of the Kubera enterprise a
 
 
 | Parameter                                       | Description                                   | Default                                   |
-| ------------------------------------------------|-----------------------------------------------| ------------------------------------------|
+
+|-------------------------------------------------|-----------------------------------------------|-------------------------------------------|
 
 | `platform`                                      | Choose your kubernetes platform               |           `default`                       |
 | `imagePullSecret`                               | Image pull secret for kubera enterprise images|           `kubera-img-pull-secret`        |
