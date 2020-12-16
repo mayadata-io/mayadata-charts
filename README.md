@@ -24,7 +24,6 @@ The following table lists the configurable parameters of the Kubera enterprise a
 
 
 | Parameter                                       | Description                                   | Default                                   |
-
 |-------------------------------------------------|-----------------------------------------------|-------------------------------------------|
 | `platform`                                      | Choose your kubernetes platform               |           `default`                       |
 | `imagePullSecret`                               | Image pull secret for kubera enterprise images|           `kubera-img-pull-secret`        |
@@ -38,9 +37,7 @@ The following table lists the configurable parameters of the Kubera enterprise a
 
 ## MongoDB Configuration
 
-
 | Parameter                                 | Description                                                                                                | Default                                                      |
-
 |-------------------------------------------|------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
 | `mongodb.image.registry`                          | MongoDB image registry                                                                                     | `docker.io`                                                  |
 | `mongodb.image.repository`                        | MongoDB image name                                                                                         | `bitnami/mongodb`                                            |
@@ -51,9 +48,7 @@ The following table lists the configurable parameters of the Kubera enterprise a
 
 ## Ingress Nginx Configuration
 
-
 | Parameter                                 | Description                                                                                                | Default                                                      |
-
 |-------------------------------------------|------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
 | `ingress-nginx.controller.image.repository`                          | Ingress Nginx image repo registry                                                                                     | `k8s.gcr.io/ingress-nginx/controller`                                                  |
 | `ingress-nginx.controller.image.tag`                               | Ingress Nginx image tag tag                                                                                          | `v0.40.2`                                                 |
