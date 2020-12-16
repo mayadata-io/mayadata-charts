@@ -119,7 +119,7 @@ entries:
   kubera-classic:
   - apiVersion: v1
     appVersion: 2.1.0
-    created: "2020-12-15T15:28:34.451591763Z"
+    created: "2020-12-16T12:42:51.020596151Z"
     description: Kubera classic is a complete solution for the use of Kubernetes as
       a data layer. It includes Director and OpenEBS
     digest: 1d51b6a73fababb1c887ace1b561b101e792780ab761722e69c67d1ab7dd84ed
@@ -143,7 +143,7 @@ entries:
   kubera-enterprise:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2020-12-15T15:28:34.459260531Z"
+    created: "2020-12-16T12:42:51.027098218Z"
     dependencies:
     - condition: mongodb.enablemodule
       name: mongodb
@@ -155,7 +155,7 @@ entries:
       version: 3.7.1
     description: Kubera Enterprise is a complete solution for the use of Kubernetes
       as a data layer.
-    digest: 2269eec93a63d302bb412ed6e92940af175fbde40c298cb2d71b29dd4421b027
+    digest: 0d13a487f21f82b1f73353c55e44d558eb0a58b3a6650fc39c327440b960e440
     home: https://www.mayadata.io/
     icon: https://raw.githubusercontent.com/mayadata-io/kubera-charts/master/mayadata-icon.png
     keywords:
@@ -170,4 +170,4 @@ entries:
     urls:
     - http://asset.mayadata.io/charts/kubera-enterprise-0.0.1.tgz
     version: 0.0.1
-generated: "2020-12-15T15:28:34.445526944Z"
+generated: "2020-12-16T12:42:51.014100787Z"
