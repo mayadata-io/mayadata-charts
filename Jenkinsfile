@@ -22,6 +22,7 @@ pipeline {
                     if (env.BRANCH_NAME == 'master' || env.BRANCH_NAME == '3.0' )  {
 		             withCredentials([usernamePassword( credentialsId: 'dd46bd83-0e93-492b-bc43-fcb671b135c3', usernameVariable: 'user', passwordVariable: 'pass')]) {
                                sh """
+                                   sed 's/name: kubera-enterprise/name: kubera-enterprise-ci/g' -i ./kubera-enterprise/Chart.yaml
                                    helm package ./kubera-classic
                                    helm package ./kubera-enterprise
                                    git clone https://${user}:${pass}@github.com/mayadata-io/${REPO}.git
@@ -42,6 +43,34 @@ pipeline {
                     }
                 }
             }
+        stage('Build for tag release') {
+        steps {
+          echo "Workspace dir is ${pwd()}"
+            script {
+             withCredentials([usernamePassword( credentialsId: 'dd46bd83-0e93-492b-bc43-fcb671b135c3', usernameVariable: 'user', passwordVariable: 'pass')]) {
+              if (TAG) {
+                 sh """
+                     sed 's/name: kubera-enterprise/name: kubera-enterprise-ci/g' -i ./kubera-enterprise/Chart.yaml
+                     helm package ./kubera-classic
+                     helm package ./kubera-enterprise
+                     git clone https://${user}:${pass}@github.com/mayadata-io/${REPO}.git
+                     cd  ${REPO}
+                     git checkout gh-pages
+                     mkdir tmp
+                     mv ../*.tgz ./tmp
+                     helm repo index --url http://asset.mayadata.io/charts/ --merge ./index.yaml tmp
+                     mv tmp/index.yaml .
+                     aws s3 cp ./tmp/  s3://asset.mayadata.io/charts/ --recursive --acl public-read
+                     rm -rf tmp
+                     git add .
+                     git commit -m "release new charts"
+                     git push https://${user}:${pass}@github.com/mayadata-io/${REPO}.git --all
+                    """
+              }
+            }
+          }  
+        }
+      }       
         }
     post {
         always {
