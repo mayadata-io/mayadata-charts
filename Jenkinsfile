@@ -13,10 +13,7 @@ pipeline {
             steps {
                 script {
                     sh "pwd && helm lint kubera-classic/ && helm lint kubera-enterprise/"
-                     TAG = sh (
-                                     returnStdout: true,
-                                      script: 'git tag --points-at HEAD | awk NF'
-                                      ).trim()
+                     TAG = sh(returnStdout: true, script: "git tag --contains").trim()
                                      sh "echo ${TAG}"
                 }
             }
