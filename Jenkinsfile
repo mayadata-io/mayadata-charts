@@ -54,7 +54,7 @@ pipeline {
             script {
              withCredentials([usernamePassword( credentialsId: 'dd46bd83-0e93-492b-bc43-fcb671b135c3', usernameVariable: 'user', passwordVariable: 'pass')]) {
               if (TAG) {
-                 sh """
+                 sh '''
                      sed 's/tag: master-ci/tag: "${TAG}"/g' -i ./kubera-enterprise/values.yaml
                      sed 's/version: .*$/version: "${TAG}"/g' -i ./kubera-enterprise/Chart.yaml
                      sed 's/appVersion: .*$/appVersion: "${TAG}"/g' -i ./kubera-enterprise/Chart.yaml
@@ -72,7 +72,7 @@ pipeline {
                      git add .
                      git commit -m "release new charts"
                      git push https://${user}:${pass}@github.com/mayadata-io/${REPO}.git --all
-                    """
+                    '''
               }
             }
           }  
