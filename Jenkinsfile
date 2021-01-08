@@ -55,9 +55,9 @@ pipeline {
              withCredentials([usernamePassword( credentialsId: 'dd46bd83-0e93-492b-bc43-fcb671b135c3', usernameVariable: 'user', passwordVariable: 'pass')]) {
               if (TAG) {
                  sh """
-                     sed 's/tag: master-ci/tag: '${TAG}'/g' -i ./kubera-enterprise/values.yaml
-                     sed 's/version: .*$/version: '${TAG}'/g' -i ./kubera-enterprise/Chart.yaml
-                     sed 's/appVersion: .*$/appVersion: '${TAG}'/g' -i ./kubera-enterprise/Chart.yaml
+                     sed 's/tag: master-ci/tag: "${TAG}"/g' -i ./kubera-enterprise/values.yaml
+                     sed 's/version: .*$/version: "${TAG}"/g' -i ./kubera-enterprise/Chart.yaml
+                     sed 's/appVersion: .*$/appVersion: "${TAG}"/g' -i ./kubera-enterprise/Chart.yaml
                      helm package ./kubera-classic
                      helm package ./kubera-enterprise
                      git clone https://${user}:${pass}@github.com/mayadata-io/${REPO}.git
