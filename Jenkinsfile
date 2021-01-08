@@ -57,7 +57,7 @@ pipeline {
                      sed 's/appVersion: .*$/appVersion: "${TAG}"/g' -i ./kubera-enterprise/Chart.yaml
                      helm package ./kubera-classic
                      helm package ./kubera-enterprise
-                     git clone https://${user}:${pass}@github.com/mayadata-io/${REPO}.git
+                     git clone https://"${user}":"${pass}"@github.com/mayadata-io/"${REPO}".git
                      cd  ${REPO}
                      git checkout gh-pages
                      mkdir tmp
@@ -68,7 +68,7 @@ pipeline {
                      rm -rf tmp
                      git add .
                      git commit -m "release new charts"
-                     git push https://${user}:${pass}@github.com/mayadata-io/${REPO}.git --all
+                     git push https://"${user}":"${pass}"@github.com/mayadata-io/"${REPO}".git --all
                     '''
               }
             }
