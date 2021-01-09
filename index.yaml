@@ -119,7 +119,7 @@ entries:
   kubera-classic:
   - apiVersion: v1
     appVersion: 2.1.0
-    created: "2021-01-09T08:18:42.533339423Z"
+    created: "2021-01-08T18:19:44.419179605Z"
     description: Kubera classic is a complete solution for the use of Kubernetes as
       a data layer. It includes Director and OpenEBS
     digest: 1d51b6a73fababb1c887ace1b561b101e792780ab761722e69c67d1ab7dd84ed
@@ -141,35 +141,6 @@ entries:
     - http://asset.mayadata.io/charts/kubera-classic-2.1.0.tgz
     version: 2.1.0
   kubera-enterprise:
-  - apiVersion: v1
-    appVersion: 0.0.3
-    created: "2021-01-09T07:47:59.686556884Z"
-    dependencies:
-    - condition: mongodb.enablemodule
-      name: mongodb
-      repository: https://charts.bitnami.com/bitnami
-      version: 9.2.4
-    - condition: ingress-nginx.enablemodule
-      name: ingress-nginx
-      repository: https://kubernetes.github.io/ingress-nginx
-      version: 3.7.1
-    description: Kubera Enterprise is a complete solution for the use of Kubernetes
-      as a data layer.
-    digest: 0ddefd46b714086a57a5c3b2c28bdca96e74e59fd9f9f200209ade2c6f04d722
-    home: https://www.mayadata.io/
-    icon: https://raw.githubusercontent.com/mayadata-io/kubera-charts/master/mayadata-icon.png
-    keywords:
-    - cloud-native-storage
-    - storage
-    maintainers:
-    - email: support@mayadata.io
-      name: MayaData
-    name: kubera-enterprise
-    sources:
-    - https://github.com/mayadata-io/kubera-charts.git
-    urls:
-    - http://asset.mayadata.io/charts/kubera-enterprise-0.0.3.tgz
-    version: 0.0.3
   - apiVersion: v1
     appVersion: 0.0.1
     created: "2020-12-24T15:42:32.206613876Z"
@@ -199,97 +170,10 @@ entries:
     urls:
     - http://asset.mayadata.io/charts/kubera-enterprise-0.0.1.tgz
     version: 0.0.1
-  - apiVersion: v1
-    appVersion: TechPreview-2
-    created: "2021-01-08T19:35:38.422213442Z"
-    dependencies:
-    - condition: mongodb.enablemodule
-      name: mongodb
-      repository: https://charts.bitnami.com/bitnami
-      version: 9.2.4
-    - condition: ingress-nginx.enablemodule
-      name: ingress-nginx
-      repository: https://kubernetes.github.io/ingress-nginx
-      version: 3.7.1
-    description: Kubera Enterprise is a complete solution for the use of Kubernetes
-      as a data layer.
-    digest: c91bdb5bc519eacdb3fdb1379161d4fee4bfd36c5a9eb0c72a3e126d2d589bce
-    home: https://www.mayadata.io/
-    icon: https://raw.githubusercontent.com/mayadata-io/kubera-charts/master/mayadata-icon.png
-    keywords:
-    - cloud-native-storage
-    - storage
-    maintainers:
-    - email: support@mayadata.io
-      name: MayaData
-    name: kubera-enterprise
-    sources:
-    - https://github.com/mayadata-io/kubera-charts.git
-    urls:
-    - http://asset.mayadata.io/charts/kubera-enterprise-TechPreview-2.tgz
-    version: TechPreview-2
-  - apiVersion: v1
-    appVersion: TechPreview-2
-    created: "2021-01-09T07:22:06.331857753Z"
-    dependencies:
-    - condition: mongodb.enablemodule
-      name: mongodb
-      repository: https://charts.bitnami.com/bitnami
-      version: 9.2.4
-    - condition: ingress-nginx.enablemodule
-      name: ingress-nginx
-      repository: https://kubernetes.github.io/ingress-nginx
-      version: 3.7.1
-    description: Kubera Enterprise is a complete solution for the use of Kubernetes
-      as a data layer.
-    digest: c91bdb5bc519eacdb3fdb1379161d4fee4bfd36c5a9eb0c72a3e126d2d589bce
-    home: https://www.mayadata.io/
-    icon: https://raw.githubusercontent.com/mayadata-io/kubera-charts/master/mayadata-icon.png
-    keywords:
-    - cloud-native-storage
-    - storage
-    maintainers:
-    - email: support@mayadata.io
-      name: MayaData
-    name: kubera-enterprise
-    sources:
-    - https://github.com/mayadata-io/kubera-charts.git
-    urls:
-    - http://asset.mayadata.io/charts/kubera-enterprise-TechPreview-2.tgz
-    version: TechPreview-2
-  - apiVersion: v1
-    appVersion: TechPreview-2
-    created: "2021-01-09T08:00:46.266450214Z"
-    dependencies:
-    - condition: mongodb.enablemodule
-      name: mongodb
-      repository: https://charts.bitnami.com/bitnami
-      version: 9.2.4
-    - condition: ingress-nginx.enablemodule
-      name: ingress-nginx
-      repository: https://kubernetes.github.io/ingress-nginx
-      version: 3.7.1
-    description: Kubera Enterprise is a complete solution for the use of Kubernetes
-      as a data layer.
-    digest: ae2e2b0001a53f3a135e855032ca2d0bb7622a3280fcee35989430871647aa6f
-    home: https://www.mayadata.io/
-    icon: https://raw.githubusercontent.com/mayadata-io/kubera-charts/master/mayadata-icon.png
-    keywords:
-    - cloud-native-storage
-    - storage
-    maintainers:
-    - email: support@mayadata.io
-      name: MayaData
-    name: kubera-enterprise
-    sources:
-    - https://github.com/mayadata-io/kubera-charts.git
-    urls:
-    - http://asset.mayadata.io/charts/kubera-enterprise-TechPreview-2.tgz
-    version: TechPreview-2
   kubera-enterprise-ci:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2021-01-09T08:18:42.541756433Z"
+    created: "2021-01-08T18:19:44.42618258Z"
     dependencies:
     - condition: mongodb.enablemodule
       name: mongodb
@@ -316,4 +200,4 @@ entries:
     urls:
     - http://asset.mayadata.io/charts/kubera-enterprise-ci-0.0.1.tgz
     version: 0.0.1
-generated: "2021-01-09T08:18:42.526951772Z"
+generated: "2021-01-08T18:19:44.412614809Z"
