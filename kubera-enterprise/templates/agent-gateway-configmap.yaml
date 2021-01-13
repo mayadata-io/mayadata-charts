@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: agent-gateway-config
+data:
+  CREATE_CLIENT_USERNAME: {{ randAlphaNum 10 | quote }}
+  CREATE_CLIENT_PASSWORD: {{ randAlphaNum 10 | quote }}
