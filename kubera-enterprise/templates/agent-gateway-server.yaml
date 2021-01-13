@@ -1,0 +1,60 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: agent-gateway-server
+  labels:
+    kubera.io/app: agent-gateway-server
+spec:
+  selector:
+    matchLabels:
+      kubera.io/app: agent-gateway-server
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        kubera.io/app: agent-gateway-server
+    spec:
+      imagePullSecrets:
+        {{- if .Values.imagePullSecret }}
+        - name: {{ .Values.imagePullSecret }}
+        {{- else }}
+        - name: kubera-img-pull-secret
+        {{- end }}
+      containers:
+      - name: agent-gateway-server
+        image: {{ .Values.image.registry }}/{{ .Values.image.organization }}/gateway-server:{{ .Values.image.tag }} # TODO
+        command:
+        - server
+        args:
+        - --debug-server
+        - -logging-level
+        - debug
+        envFrom:
+        - configMapRef:
+            name: agent-gateway-config
+        - configMapRef:
+            name: kubera-core-config
+        env:
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        ports:
+        - name: gateway-server
+          containerPort: 8080
+        - name: debug-server
+          containerPort: 8081
+        # This values are calculated when 20 clients are connected to
+        # server and each client was serving ~10 requests per second
+        resources:
+          requests:
+            memory: 50Mi
+            cpu: 100m
+          limits:
+            memory: 100Mi
+            cpu: 200m
+      serviceAccountName: agent-gateway-server
