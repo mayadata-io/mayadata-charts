@@ -10,7 +10,7 @@ scheme: "http"
 image:
     registry: docker.io
     organization: mayadataio
-    tag: master-ci
+    tag: TechPreview-3
 db:
     server: ""
     user: ""
