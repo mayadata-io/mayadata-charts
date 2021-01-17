@@ -1,6 +1,5 @@
 ### KUBERA ENTERPRISE RELEASE GUIDELINES
-- Repositories use release version according to the [Semantic Versioning](https://semver.org/)
-, except the <b>TechPreview</b> series
+- Repositories use release version according to the [Semantic Versioning](https://semver.org/), except the <b>TechPreview</b> series
 
 - Release version should be the same in each module
 
