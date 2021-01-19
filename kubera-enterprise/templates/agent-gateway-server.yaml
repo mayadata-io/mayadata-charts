@@ -23,6 +23,7 @@ spec:
       containers:
       - name: agent-gateway-server
         image: {{ .Values.image.registry }}/{{ .Values.image.organization }}/gateway-server:{{ .Values.image.tag }} # TODO
+        imagePullPolicy: Always
         command:
         - server
         args:
