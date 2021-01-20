@@ -55,8 +55,11 @@
     fi;
     ```
   - Make GitHub tags with the release version for each of modules
-    Note- kubera-core-server github tag should be created at last
-    
+    Notes: 
+    - kubera-core-server github tag should be created at last
+    - If build is made from branch, circleci scripts would pick the image name as <branch_name>-ci,
+    - If build is made from git tag, circleci scripts would pick the image name as
+
   - Wait for the build to be finished in each of the modules
   
   - Releasing helm charts
@@ -75,6 +78,7 @@
        git push origin TechPreview-3
        ``` 
        Or, Make it from the github UI
+
        
 ### Terminologies
 - Release branch
