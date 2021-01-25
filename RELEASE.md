@@ -64,7 +64,7 @@
   
   - Releasing helm charts
      - Make a branch out of the master 
-        Note: Don't name the checkout branch with the release version
+        Note: Don't name the checkout branch same as release version
      - Change the `image.tag` to release version in `values.yaml`
        ```yaml
         image:
