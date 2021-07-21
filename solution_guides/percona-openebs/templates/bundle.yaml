@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "pxc-operator.fullname" . }}
+  labels:
+{{ include "pxc-operator.labels" . | indent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: operator
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/name: {{ include "pxc-operator.name" . }}
+      app.kubernetes.io/part-of: {{ include "pxc-operator.name" . }}
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: operator
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/name: {{ include "pxc-operator.name" . }}
+        app.kubernetes.io/part-of: {{ include "pxc-operator.name" . }}
+    spec:
+      containers:
+      - command:
+        - percona-xtradb-cluster-operator
+        env:
+        - name: WATCH_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: OPERATOR_NAME
+          value: percona-xtradb-cluster-operator
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /metrics
+            port: metrics
+            scheme: HTTP
+        name: {{ .Chart.Name }}
+        ports:
+        - containerPort: 8080
+          name: metrics
+          protocol: TCP
+      serviceAccountName: percona-xtradb-cluster-operator
