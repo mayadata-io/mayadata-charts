@@ -200,4 +200,23 @@ entries:
     urls:
     - http://asset.mayadata.io/charts/kubera-enterprise-ci-0.0.1.tgz
     version: 0.0.1
-generated: "2021-03-23T10:50:52.2010594Z"
+  percona-openebs:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2021-07-21T16:30:38.23900284+05:30"
+    dependencies:
+    - name: openebs
+      repository: https://openebs.github.io/charts/
+      version: 2.11.0
+    description: A Helm chart for installing Percona XtraDB Cluster with OpenEBS.
+    digest: 3c63a0ae9450629e9b0c1219b32c27969bcad597674747b71a2898756ee6f7cd
+    home: https://www.mayadata.io/
+    icon: https://raw.githubusercontent.com/mayadata-io/mayadata-charts/master/mayadata-icon.png
+    maintainers:
+    - email: atul.abhishek@mayadata.io
+      name: Atul Abhishek
+    name: percona-openebs
+    urls:
+    - http://asset.mayadata.io/charts/percona-openebs-0.1.17.tgz
+    version: 0.1.17
+generated: "2021-07-21T16:30:38.208495515+05:30"
