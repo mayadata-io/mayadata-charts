@@ -1,6 +1,3 @@
-Kubera Enterprise
-=====================
-
 Introduction
 ------------
 
