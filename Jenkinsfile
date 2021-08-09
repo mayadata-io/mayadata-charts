@@ -27,6 +27,7 @@ pipeline {
                                    sed 's/name: kubera-enterprise/name: kubera-enterprise-ci/g' -i ./kubera-enterprise/Chart.yaml
                                    helm package ./kubera-classic
                                    helm package ./kubera-enterprise
+				   helm package ./solution_guides/percona-openebs
                                    git clone https://${user}:${pass}@github.com/mayadata-io/${REPO}.git
                                    cd  ${REPO}
                                    git checkout gh-pages
