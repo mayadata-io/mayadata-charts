@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: percona/percona-xtradb-cluster-operator
-  tag: 1.8.0
+  tag: 1.9.0
   pullPolicy: IfNotPresent
 
 # set if you want to specify a namespace to watch
@@ -27,7 +27,7 @@ fullnameOverride: ""
 
 pxc:
   size: 3
-  image: percona/percona-xtradb-cluster:8.0.22-13.1
+  image: percona/percona-xtradb-cluster:8.0.23-14.1
   autoRecovery: true
   storageClass: openebs-hostpath
   storage: 6G
@@ -35,15 +35,15 @@ pxc:
 haproxy:
   enabled: true
   size: 3
-  image: percona/percona-xtradb-cluster-operator:1.8.0-haproxy
+  image: percona/percona-xtradb-cluster-operator:1.9.0-haproxy 
 
 proxysql:
   enabled: false
   size: 3
-  image: percona/percona-xtradb-cluster-operator:1.8.0-proxysql
+  image: percona/percona-xtradb-cluster-operator:1.9.0-proxysql 
 
 pmm:
   enabled: false
-  image: percona/pmm-client:2.12.0
+  image: percona/pmm-client:2.18.0
   serverHost: monitoring-service
   serverUser: admin

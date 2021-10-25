@@ -1,4 +1,4 @@
-apiVersion: pxc.percona.com/v1-8-0
+apiVersion: pxc.percona.com/v1-9-0
 kind: PerconaXtraDBCluster
 metadata:
   name: cluster1
@@ -9,7 +9,7 @@ metadata:
 #  annotations:
 #    percona.com/issue-vault-token: "true"
 spec:
-  crVersion: 1.8.0
+  crVersion: 1.9.0
   secretsName: my-cluster-secrets
   vaultSecretName: keyring-secret-vault
   sslSecretName: my-cluster-ssl
@@ -44,17 +44,22 @@ spec:
 #        - 10.0.0.0/8
 #      annotations:
 #        networking.gke.io/load-balancer-type: "Internal"
-#     replicationChannels:
-#     - name: pxc1_to_pxc2
-#       isSource: true
-#       secretName: my-cluster-name-replication
+#    replicationChannels:
+#    - name: pxc1_to_pxc2
+#      isSource: true
+#    - name: pxc2_to_pxc1
+#      isSource: false
+#      sourcesList:
+#      - host: 10.95.251.101
+#        port: 3306
+#        weight: 100
 #    schedulerName: mycustom-scheduler
 #    readinessDelaySec: 15
 #    livenessDelaySec: 600
 #    forceUnsafeBootstrap: false
 #    configuration: |
 #      [mysqld]
-#      wsrep_debug=ON
+#      wsrep_debug=CLIENT
 #      wsrep_provider_options="gcache.size=1G; gcache.recover=yes"
 #      [sst]
 #      xbstream-opts=--decompress
@@ -70,6 +75,18 @@ spec:
 #      iam.amazonaws.com/role: role-arn
 #    labels:
 #      rack: rack-22
+#    readinessProbes:
+#      initialDelaySeconds: 15
+#      timeoutSeconds: 15
+#      periodSeconds: 30
+#      successThreshold: 1
+#      failureThreshold: 5
+#    livenessProbes:
+#      initialDelaySeconds: 300
+#      timeoutSeconds: 5
+#      periodSeconds: 10
+#      successThreshold: 1
+#      failureThreshold: 3
 #    containerSecurityContext:
 #      privileged: false
 #    podSecurityContext:
@@ -145,6 +162,7 @@ spec:
 #      global
 #        maxconn 2048
 #        external-check
+#        insecure-fork-wanted
 #        stats socket /var/run/haproxy.sock mode 600 expose-fd listeners level user
 #
 #      defaults
@@ -157,7 +175,7 @@ spec:
 #
 #      frontend galera-in
 #        bind *:3309 accept-proxy
-#        bind *:3306 accept-proxy
+#        bind *:3306
 #        mode tcp
 #        option clitcpka
 #        default_backend galera-nodes
@@ -173,6 +191,18 @@ spec:
 #      iam.amazonaws.com/role: role-arn
 #    labels:
 #      rack: rack-22
+#    readinessProbes:
+#      initialDelaySeconds: 15
+#      timeoutSeconds: 1
+#      periodSeconds: 5
+#      successThreshold: 1
+#      failureThreshold: 3
+#    livenessProbes:
+#      initialDelaySeconds: 60
+#      timeoutSeconds: 5
+#      periodSeconds: 30
+#      successThreshold: 1
+#      failureThreshold: 4
 #    serviceType: ClusterIP
 #    externalTrafficPolicy: Cluster
 #    replicasServiceType: ClusterIP
@@ -223,14 +253,14 @@ spec:
       maxUnavailable: 1
 #      minAvailable: 0
     gracePeriod: 30
-#   loadBalancerSourceRanges:
-#     - 10.0.0.0/8
-#   serviceAnnotations:
-#     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+#    loadBalancerSourceRanges:
+#      - 10.0.0.0/8
+#    serviceAnnotations:
+#      service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
   proxysql:
     enabled: {{ .Values.proxysql.enabled }}
     size: {{ .Values.proxysql.size }}
-    image: {{ .Values.proxysql.image }}
+    image: {{ .Values.proxysql.image }} 
 #    imagePullPolicy: Always
 #    configuration: |
 #      datadir="/var/lib/proxysql"
@@ -352,7 +382,7 @@ spec:
 #     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
   logcollector:
     enabled: true
-    image: percona/percona-xtradb-cluster-operator:1.8.0-logcollector
+    image: percona/percona-xtradb-cluster-operator:1.9.0-logcollector
 #    configuration: |
 #      [OUTPUT]
 #           Name  es
@@ -377,7 +407,7 @@ spec:
 #        memory: 200M
 #        cpu: 500m
   backup:
-    image: percona/percona-xtradb-cluster-operator:1.8.0-pxc8.0-backup
+    image: percona/percona-xtradb-cluster-operator:1.9.0-pxc8.0-backup
 #    serviceAccountName: percona-xtradb-cluster-operator
 #    imagePullSecrets:
 #      - name: private-registry-credentials
@@ -460,7 +490,7 @@ spec:
 #          supplementalGroups: [1001, 1002, 1003]
         volume:
           persistentVolumeClaim:
-            storageClassName: storageClass
+#            storageClassName: standard
             accessModes: [ "ReadWriteOnce" ]
             resources:
               requests:
